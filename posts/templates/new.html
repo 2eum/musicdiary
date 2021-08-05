@@ -1,0 +1,6 @@
+<h1>나의 이야기</h1>
+
+<form method="POST" class="post=form"> {% csrf_token %}
+{{ form.as_p }}
+<button type="submit">작성 완료 !</button>
+</form>

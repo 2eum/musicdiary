@@ -1,0 +1,11 @@
+<h1>나의 이야기</h1>
+
+<a href="{% url 'new' %}">끄적 끄적</a>
+{% for post in posts_list %}
+    <h3>{{post.title}}</h3>
+    <h2>{{post.music_title}}</h2>
+    <h4>{{post.writer}}</h4>
+    <p>{{post.pub_date}}</p>
+    <p>{{post.body|linebreaks}}</p>
+    <hr>
+    {% endfor %}

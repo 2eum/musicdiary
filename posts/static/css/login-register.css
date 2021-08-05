@@ -1,0 +1,13 @@
+.login-container {
+  width: 80%;
+  margin: 5rem auto;
+}
+
+.login-card {
+  background-color: var(--mus-white);
+}
+
+.login-card legend {
+  font-family: Pretendard-Bold;
+  color: var(--mus-darkgray);
+}

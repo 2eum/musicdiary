@@ -23,4 +23,6 @@ urlpatterns = [
     path('', views.home, name="home"),
     path('new/', views.new, name="new"),
     path('mypage/', views.user_listview),
+    path('login/', views.login),
+    path('register/', views.register),
 ]

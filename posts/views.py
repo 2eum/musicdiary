@@ -12,7 +12,6 @@ def home(request):
     return render(request,'home.html',{'posts_list':posts})
 
 def new(request):
-
     if request.method == 'POST':
         form = ContentForm(request.POST, request.FILES)
         if form.is_valid():
@@ -24,3 +23,9 @@ def new(request):
     else:
         form = ContentForm()
     return render(request, 'new.html', {'form': form})    
+
+def login(request):
+    return render(request, 'login.html')
+
+def register(request):
+    return render(request, 'register.html')

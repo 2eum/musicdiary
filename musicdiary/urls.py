@@ -23,4 +23,6 @@ urlpatterns = [
     path('', views.home, name="home"),
     path('new/', views.new, name="new"),
     path('mypage/', views.user_listview),
+    path('search_home/', views.search_home, name="search_home"),
+    path('search_home/search_query/', views.search_query, name="search_query"),
 ]

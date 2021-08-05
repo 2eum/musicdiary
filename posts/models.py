@@ -10,3 +10,7 @@ class Content(models.Model):
     writer = models.CharField(max_length=100)
     pub_date = models.DateTimeField(default=timezone.now)
     body = models.TextField(default='')
+    track_title = models.CharField(max_length=500)
+    track_artist = models.CharField(max_length=500)
+    track_album_cover = models.CharField(max_length=500)
+    track_audio = models.CharField(max_length=500)

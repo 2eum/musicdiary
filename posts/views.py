@@ -5,6 +5,8 @@ from .forms import ContentForm
 
 # Create your views here.
 
+def user_listview(request):
+    return render(request, 'user-listview.html')
 def home(request):
     posts = Content.objects.all()
     return render(request,'home.html',{'posts_list':posts})

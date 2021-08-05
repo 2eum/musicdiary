@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/f0ec34fd1a.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <title>Music Diary</title>
+  </head>
+  <body>
+    <!-- top-nav section -->
+    <nav class="ph4 flex lh-solid w-100 justify-between pv1 items-center">
+      <a class="logo" href="#"
+        ><img src="{% static 'images/logo.jpg' %}" alt="logo" class="br-100"
+      /></a>
+      <div class="menus flex justify-between items-center w-100 ml4">
+        <ul class="flex items-center h3">
+          <li class="mh3 br2 h2 flex">
+            <input
+              class="
+                search-input
+                f7 f7-l
+                input-reset
+                fl
+                black-80
+                bg-white
+                pv2
+                ph2
+                br2-ns
+                br--left-ns
+                ba
+                b--moon-gray
+                h2
+              "
+              placeholder="검색하기"
+              type="text"
+              name="search"
+              value=""
+              id="search"
+            />
+            <button
+              class="
+                f7 f7-l
+                button-reset
+                fl
+                pa2
+                tc
+                bn
+                bg-animate
+                btn-beige
+                white
+                pointer
+                br2-ns
+                br--right-ns
+                h2
+                ph3
+              "
+              type="submit"
+            >
+              <i class="fas fa-search"></i>
+            </button>
+          </li>
+          <li class="mh2">
+            <a href="#" class="dark-grey">둘러보기</a>
+          </li>
+        </ul>
+        <ul class="flex items-center">
+          <li class="mh3 f7">
+            <a href="#" class="dark-grey">내 페이지</a>
+          </li>
+          <li class="mh3 f7">
+            <a href="#" class="dark-grey">로그아웃</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    {% block content %} {% endblock %}
+  </body>
+</html>

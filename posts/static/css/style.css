@@ -86,7 +86,7 @@ a {
 }
 
 a:visited {
-  color: var(--mus-black);
+  color: inherit;
 }
 
 a:hover {
@@ -108,6 +108,10 @@ input:focus {
 
 .btn-beige:hover {
   background-color: var(--mus-brown);
+}
+
+.btn-beige:visited {
+  color: var(--mus-white);
 }
 
 .pretendard {
@@ -146,7 +150,7 @@ nav > .logo {
   height: 50vh;
 }
 
-.today {
+.shady {
   color: #665e49;
 }
 
@@ -163,6 +167,10 @@ nav > .logo {
 
 .create-btn {
   background-color: #ebb29b;
+  color: var(--mus-white);
+}
+
+.create-btn:visited {
   color: var(--mus-white);
 }
 
@@ -184,10 +192,32 @@ nav > .logo {
   background-color: var(--mus-white);
 }
 
+.home-banner-container {
+  background: linear-gradient(
+    to bottom,
+    rgba(196, 185, 157),
+    rgba(196, 185, 157, 0.82)
+  );
+}
+
+.home-banner-container *,
+.home-banner-container p,
+.home-banner-container .diary-title {
+  color: var(--mus-white);
+}
+
+.home-banner-container .preview {
+  background: transparent;
+}
+
+.home-content-container .preview {
+  width: 60vw;
+  height: 55vh;
+}
+
 .music-title {
   font-family: Pretendard-Medium;
   color: var(--mus-darkgray);
-  margin: 12px;
 }
 
 .music-artist {
@@ -197,6 +227,7 @@ nav > .logo {
 
 .preview-music img {
   width: 100%;
+  filter: drop-shadow(3px 3px 3px #000);
 }
 
 .diary-title {
@@ -221,6 +252,6 @@ nav > .logo {
   background: none;
 }
 
-.home-content-container {
-  background-color: var(--mus-white);
+.pink-emp {
+  color: #dba691;
 }

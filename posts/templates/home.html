@@ -1,44 +1,52 @@
 {% extends './base.html' %} {% load static %} {% block content %}
 
-<main class="mv4">
+<main>
+<section class="home-banner-container">
 <section
     class="content-area w-80 ml-auto mr-auto"
 >
-<article class="home-content-container flex flex-column items-center">
-    <h1 class="tc">누군가의 오늘 하루</h1>
-    <section class="switchables">
+<article class="home-content-container flex flex-column items-center w-100 pa4">
+    <h2 class="f5 fw3 shady">{% now "Y" %}년 {% now "M" %} {% now "j" %}일</h2>
+    <p class="tc f2 mt3 fw4">누군가의 오늘 하루, 그리고 음악</p>
+    <section class="switchables ph5">
     {% for post in posts_list %}
         {% if forloop.first %}
-            <div class="preview ph3 pv3 entry current w-100">
+            <div class="preview ph4 pv4 entry justify-between br2 current">
         {% else %}
-            <div class="preview ph3 pv3 entry w-100">
+            <div class="preview ph4 pv4 entry justify-between br2">
         {% endif %}
-            <button class="prev bn"><i class="fas fa-chevron-left"></i></button>
-            <div class="preview-music w-30 ph3 pv3 tc">
-            <img
-                src="{{ post.track_album_cover }}"
-                alt="album-image"
-                class="br-100"
-            />
-            <p class="music-title f3">{{post.track_title}}</p>
-            <p class="music-artist">{{post.track_artist}}</p>
-            <audio src="{{ post.track_audio }}" controls>mp3-preview</audio>
+            <button class="prev bn pointer f3"><i class="fas fa-chevron-left"></i></button>
+            <div class="preview-music w-30 ph3 pv3 tc h-100">
+                <img
+                    src="{{ post.track_album_cover }}"
+                    alt="album-image"
+                    class="br-100"
+                />
+                <p class="music-title f5 ma2">{{post.track_title}}</p>
+                <p class="music-artist f7 mb3">{{post.track_artist}}</p>
+                <audio src="{{ post.track_audio }}" controls>mp3-preview</audio>
             </div>
-            <div class="preview-text w-70 ph3 pv3 flex flex-column">
-            <h3 class="diary-title f3 mb3">
-                <a href="#">{{post.title}}</a>
-            </h3>
-            <h3>작성자: {{post.writer}}</h3>
-            <p class="diary-text-preview lh-large">{{post.body|linebreaks}}</p>
+            <div class="preview-text w-60 ph3 pv3 flex flex-column justify-around h-100">
+                <h3 class="diary-title f3 mb3 h-25 fw3">
+                    <a href="#">{{post.title}}</a>
+                    <span class="ml2 f7">작성자: {{post.writer}}</span>
+                </h3>
+                <p class="diary-text-preview lh-large h-75">{{post.body}}</p>
             </div>
-            <button class="next bn"><i class="fas fa-chevron-right"></i></button>
+            <button class="next bn pointer f3"><i class="fas fa-chevron-right"></i></button>
         </div>
         
     {% endfor %}
     </section>
-    <a href="{% url 'search_home' %}">끄적끄적</a>
 </article>
 </section>
+</section>
+<section class="create-post mt5 tc">
+    <p class="f2">오늘, <span class="pink-emp">당신의 하루</span>는 어떤 <span class="pink-emp">선율</span>이었나요?</p>
+    <a class="mv5 dib b ph4 pv2 input-reset bn br2 grow pointer f4 create-btn hover-near-white" href="{% url 'new' %}">내 이야기 쓰러가기</a>
+</section>
+
+
 </main>
 
 

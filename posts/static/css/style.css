@@ -235,6 +235,10 @@ nav > .logo {
   color: var(--mus-darkgray);
 }
 
+.diary-text-preview {
+  word-wrap: break-word;
+}
+
 .lh-large {
   line-height: 1.8;
 }

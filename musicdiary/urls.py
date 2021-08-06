@@ -25,4 +25,6 @@ urlpatterns = [
     path('mypage/', views.user_listview),
     path('login/', views.login),
     path('register/', views.register),
+    path('search_home/', views.search_home, name="search_home"),
+    path('search_home/search_query/', views.search_query, name="search_query"),
 ]

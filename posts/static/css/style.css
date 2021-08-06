@@ -139,6 +139,8 @@ nav > .logo {
   color: var(--mus-white);
 }
 
+/* header */
+
 .header-content {
   background: linear-gradient(
     120deg,
@@ -170,6 +172,8 @@ nav > .logo {
   color: var(--mus-white);
 }
 
+
+/* Main Content Area */
 .create-btn:visited {
   color: var(--mus-white);
 }
@@ -223,6 +227,7 @@ nav > .logo {
 .music-artist {
   font-family: Pretendard-Medium;
   color: var(--mus-little-darkgray);
+  margin: 12px;
 }
 
 .preview-music img {
@@ -233,6 +238,10 @@ nav > .logo {
 .diary-title {
   font-family: Pretendard-Medium;
   color: var(--mus-darkgray);
+}
+
+.tag {
+  color: var(--mus-little-darkgray);
 }
 
 .diary-text-preview {

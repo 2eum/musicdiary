@@ -54,6 +54,7 @@ def search_query(request):
     results = sp.search(search_word)
     return render(request, 'search_home.html', {'results':results})
 
+
 def detail(request, index):
     post = get_object_or_404(Content, pk=index)
     return render(request, 'detail.html', {'post':post})

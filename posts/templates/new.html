@@ -1,18 +1,18 @@
 <h1>나의 이야기</h1>
 
 <h3>선곡된 음악정보</h3>
-노래제목: {{ form.track_title }} <br>
-아티스트명: {{ form.track_artist }} <br>
-앨범커버: <img src="{{ form.track_album_cover }}" alt="album-image" width="50px"> <br>
-미리듣기: <audio src="{{ form.track_audio }}" controls>mp3-preview</audio> <br>
+노래제목: {{track_title}} <br>
+아티스트명: {{track_artist}} <br>
+앨범커버: <img src="{{ track_album_cover }}" alt="album-image" width="50px"> <br>
+미리듣기: <audio src="{{ track_audio }}" controls>mp3-preview</audio> <br>
 
 <form method="POST" class="post=form"> {% csrf_token %}
     {{ form.as_p }}
     
-    <input type="hidden" name="track_title" value="{{ form.track_title }}">
-    <input type="hidden" name="track_artist" value="{{ form.track_artist }}">
-    <input type="hidden" name="track_album_cover" value="{{ form.track_album_cover }}">
-    <input type="hidden" name="track_audio" value="{{ form.track_audio }}">
+    <input type="hidden" name="track_title" value="{{ track_title }}">
+    <input type="hidden" name="track_artist" value="{{ track_artist }}">
+    <input type="hidden" name="track_album_cover" value="{{ track_album_cover }}">
+    <input type="hidden" name="track_audio" value="{{ track_audio }}">
 
     <button type="submit">작성 완료 !</button>
 </form>

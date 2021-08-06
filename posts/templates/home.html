@@ -28,7 +28,7 @@
             </div>
             <div class="preview-text w-60 ph3 pv3 flex flex-column justify-around h-100">
                 <h3 class="diary-title f3 mb3 h-25 fw3">
-                    <a href="#">{{post.title}}</a>
+                    <a href="{% url 'detail' index=post.pk %}">{{post.title}}</a>
                     <span class="ml2 f7">작성자: {{post.writer}}</span>
                 </h3>
                 <p class="diary-text-preview lh-large h-75">{{post.body}}</p>
@@ -55,3 +55,7 @@
 {% endblock%}
 
 
+<h1>나의 이야기</h1>
+
+<a href="{% url 'search_home' %}">끄적끄적</a><br><br>
+<hr>

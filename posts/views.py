@@ -13,7 +13,8 @@ def user_listview(request):
     return render(request, 'user-listview.html')
 
 def home(request):
-    posts = Content.objects.all()
+    # 오늘 날짜 포스트만 불러오기
+    posts = Content.objects.filter(pub_date__date=timezone.datetime.today())
     return render(request,'home.html',{'posts_list':posts})
 
 def new(request):

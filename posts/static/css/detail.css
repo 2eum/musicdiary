@@ -1,0 +1,65 @@
+:root {
+    --mus-black: #212120;
+    --mus-darkgray: #595756;
+    --mus-little-darkgray: #787774;
+    --mus-neutralgray: #9e9c9a;
+    --mus-white: #fffcf8;
+    --mus-pink: #ebb29b;
+    --mus-brown: #998f76;
+}
+
+.music {
+    height: 250px;
+    /* background-color: var(--mus-white); */
+    border-radius: 3px;
+}
+
+.music img {
+    height : 80%;
+}
+
+.music-info {
+    font-family: Pretendard-Medium;
+    color: var(--mus-darkgray);
+    /* margin: 20px; */
+    text-align: left;
+    display: inline-block;
+    /* position: relative; */
+}
+
+.player {
+    text-align: center;
+    color: var(--mus-white);
+    background-color: #CCC0A3;
+    margin: 12px;
+}
+
+hr {
+    width: 16%;
+    text-align: center;
+    margin: 20px 42% 20px 42%;
+}
+
+.diary-info {
+    text-align:right;
+}
+
+.diary > .diary-title {
+    font-size: 2.2em;
+    margin-bottom: 0px;
+    margin-top: 90px;
+}
+
+.diary-author {
+    font-size: 1.3em;
+    color: var(--mus-darkgray);
+}
+
+.diary-date {
+    font-size: 1.1em;
+    color: var(--mus-darkgray);
+}
+
+.diary-content {
+    font-size: 1.2em;
+}

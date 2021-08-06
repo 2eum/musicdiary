@@ -1,0 +1,57 @@
+{% extends './base.html' %} {% load static %} {% block content %}
+
+<!-- Music Area -->
+<section class="music-area w-80 ml-auto mr-auto mv3 flex justify-center">
+    <div class="music flex ph3 pv3 mt5 justify-center">
+        <!-- shadow-5-ns -->
+        <img
+            src="{% static 'images/cover-detail.jpeg' %}"
+            alt="album cover"
+            class="br-100 mv3 ml3"
+        />
+        <div class="music-info mh3 mv3 pv4">
+            <p class="music-title f3">비가 내리는 날에는</p>
+            <p class="music-artist">윤하(Younha)</p>
+            <div class="player pv2">플레이어 들어갈 자리</div>
+        </div>
+    </div>
+</section>
+
+<hr color="#DEDBD8">
+
+<!-- Diary Area -->
+<section class="diary-area">
+    <div class="diary w-80 ml-auto mr-auto">
+        <h1 class="diary-title">
+            일기 제목입니다
+        </h1>
+        <div class="diary-info mv3">
+            <h4 class="diary-author mb3">
+                작성자 <span class="username">민세은</span>
+            </h4>
+            <h5 class="diary-date mv3">
+                2021년 8월 1일 일요일, 20:39
+            </h5>
+        </div>
+        <p class="diary-content mv5 lh-large">
+            올해는 유난히 장마가 긴 것 같다. 오늘은 엄청 바쁘고 동선도 복잡한 날이었는데, 
+            하필 깜빡하고 우산을 안 챙겨나왔다. 학원에 가야 하는데 비를 피했다가 가기에는 
+            시간이 애매해서 별 수 없이 홀딱 젖으며 역까지 뛰었다. 
+            정신없는데 비까지 맞으니까 왠지 처량해서 눈물이 날 뻔했다. 
+            그래서 슬픈 노래를 듣고 싶어졌다. 비 오는 날에는 역시 윤하 음악을 들어야 한다. 
+            ‘비가 내리는 날에는'을 들으면 이별해본 적도 없으면서 이별한 드라마 주인공 마냥 몰입되어 버린다. 
+            다음부터는 우산 잘 챙기고 다녀야지. 엣취
+        </p>
+        <ul class="tags flex justify-end w-100 mt3">
+            <li class="tag">#태그</li>
+            <li class="tag ml2">#태그</li>
+            <li class="tag mh2">#태그</li>
+        </ul>
+        
+    </div>
+</section>
+
+
+
+
+{% endblock %}

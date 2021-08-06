@@ -51,3 +51,6 @@ def search_query(request):
     search_word = request.POST.get('search-word')
     results = sp.search(search_word)
     return render(request, 'search_home.html', {'results':results})
+
+def detail(request):
+    return render(request, 'detail.html')

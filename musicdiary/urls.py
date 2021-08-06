@@ -23,6 +23,7 @@ urlpatterns = [
     path('', views.home, name="home"),
     path('new/', views.new, name="new"),
     path('detail/<int:index>', views.detail, name="detail"),
+    path('edit/<int:index>', views.edit, name="edit"),
     path('mypage/', views.user_listview),
     path('login/', views.login),
     path('register/', views.register),

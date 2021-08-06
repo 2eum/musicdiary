@@ -15,3 +15,5 @@
     <img src="{{ post.track_album_cover }}" alt="album-image" width="50px"><br>
     <audio src="{{ post.track_audio }}" controls>mp3-preview</audio><br>
 </div>
+
+<a href="{% url 'edit' index=post.pk %}">수정하기</a>

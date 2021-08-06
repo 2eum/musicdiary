@@ -24,16 +24,16 @@ def new(request):
 
     if request.method == 'POST':
         form = ContentForm(request.POST, request.FILES)
-        form.track_title = track_title
+        """ form.track_title = track_title
         form.track_artist = track_artist
         form.track_album_cover = track_album_cover
-        form.track_audio = track_audio
+        form.track_audio = track_audio """
         if form.is_valid():
             post = form.save(commit=False)
-            """ post.track_title = track_title
+            post.track_title = track_title
             post.track_artist = track_artist
             post.track_album_cover = track_album_cover
-            post.track_audio = track_audio """
+            post.track_audio = track_audio
             post.author = request.user
             post.published_date = timezone.now()
             post.save()

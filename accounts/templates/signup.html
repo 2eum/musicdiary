@@ -1,0 +1,7 @@
+<h1>이음 회원 가입</h1>
+
+<form method ='POST'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">가입하기</button>
+</form>

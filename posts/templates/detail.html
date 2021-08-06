@@ -9,7 +9,7 @@
         <img
             src="{{ post.track_album_cover }}"
             alt="album image"
-            class="br-100 mv3 ml3"
+            class="br-100 mv3 ml3 shadow-5-ns"
         />
         <div class="music-info mh3 mv3 pv4">
             <p class="music-title f3">{{post.track_title}}</p>
@@ -52,19 +52,3 @@
 </section>
 
 {% endblock %}
-
-<!-- <div class="posts">
-    {% if post.pub_date %}
-        <div class="date">
-            {{ post.pub_date }}
-        </div>
-    {% endif %}
-    <h1>{{post.title}}</h1>
-    <h4>{{post.writer}}</h4>
-    <p>{{post.pub_date}}</p>
-    <p>{{post.body|linebreaks}}</p>
-    <p>{{post.track_title}}</p>
-    <p>{{post.track_artist}}</p>
-    <img src="{{ post.track_album_cover }}" alt="album-image" width="50px"><br>
-    <audio src="{{ post.track_audio }}" controls>mp3-preview</audio><br>
-</div> -->

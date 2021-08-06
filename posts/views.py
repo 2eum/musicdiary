@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from .models import Content
 from .forms import ContentForm
@@ -56,3 +56,7 @@ def search_query(request):
     search_word = request.POST.get('search-word')
     results = sp.search(search_word)
     return render(request, 'search_home.html', {'results':results})
+
+def detail(request, index):
+    post = get_object_or_404(Content, pk=index)
+    return render(request, 'detail.html', {'post':post})

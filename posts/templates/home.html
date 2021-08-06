@@ -1,15 +1,49 @@
-<h1>나의 이야기</h1>
+{% extends './base.html' %} {% load static %} {% block content %}
 
-<a href="{% url 'search_home' %}">끄적끄적</a>
+<main class="mv4">
+<section
+    class="content-area w-80 ml-auto mr-auto"
+>
+<article class="home-content-container flex flex-column items-center">
+    <h1 class="tc">누군가의 오늘 하루</h1>
+    <section class="switchables">
+    {% for post in posts_list %}
+        {% if forloop.first %}
+            <div class="preview ph3 pv3 entry current w-100">
+        {% else %}
+            <div class="preview ph3 pv3 entry w-100">
+        {% endif %}
+            <button class="prev bn"><i class="fas fa-chevron-left"></i></button>
+            <div class="preview-music w-30 ph3 pv3 tc">
+            <img
+                src="{{ post.track_album_cover }}"
+                alt="album-image"
+                class="br-100"
+            />
+            <p class="music-title f3">{{post.track_title}}</p>
+            <p class="music-artist">{{post.track_artist}}</p>
+            <audio src="{{ post.track_audio }}" controls>mp3-preview</audio>
+            </div>
+            <div class="preview-text w-70 ph3 pv3 flex flex-column">
+            <h3 class="diary-title f3 mb3">
+                <a href="#">{{post.title}}</a>
+            </h3>
+            <h3>작성자: {{post.writer}}</h3>
+            <p class="diary-text-preview lh-large">{{post.body|linebreaks}}</p>
+            </div>
+            <button class="next bn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        
+    {% endfor %}
+    </section>
+    <a href="{% url 'search_home' %}">끄적끄적</a>
+</article>
+</section>
+</main>
 
-{% for post in posts_list %}
-    <h3>{{post.title}}</h3>
-    <h4>{{post.writer}}</h4>
-    <p>{{post.pub_date}}</p>
-    <p>{{post.body|linebreaks}}</p>
-    <p>{{post.track_title}}</p>
-    <p>{{post.track_artist}}</p>
-    <img src="{{ post.track_album_cover }}" alt="album-image" width="50px"><br>
-    <audio src="{{ post.track_audio }}" controls>mp3-preview</audio><br>
-    <hr>
-{% endfor %}
+
+
+<script src="{% static 'js/home.js' %}"></script>
+{% endblock%}
+
+

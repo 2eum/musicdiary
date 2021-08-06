@@ -203,3 +203,20 @@ nav > .logo {
 .lh-large {
   line-height: 1.8;
 }
+
+.entry {
+  display: none;
+}
+
+.entry.current {
+  display: flex;
+}
+
+.prev,
+.next {
+  background: none;
+}
+
+.home-content-container {
+  background-color: var(--mus-white);
+}

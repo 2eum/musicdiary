@@ -1,7 +1,7 @@
 {% extends './base.html' %} {% load static %} {% block content %}
 <!-- header-content section -->
 <section class="header-content flex flex-column items-center justify-around">
-  <span class="today f3">8월 2일 화요일</span>
+  <span class="shady f3">{% now "Y" %}년 {% now "M" %} {% now "j" %}일</span>
   <h1 class="greeting">
     <span class="username">민세은</span>님, 오늘은 어떤 하루였나요?
   </h1>

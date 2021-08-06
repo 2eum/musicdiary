@@ -24,24 +24,32 @@ def new(request):
 
     if request.method == 'POST':
         form = ContentForm(request.POST, request.FILES)
+        form.track_title = track_title
+        form.track_artist = track_artist
+        form.track_album_cover = track_album_cover
+        form.track_audio = track_audio
         if form.is_valid():
             post = form.save(commit=False)
-            post.track_title = track_title
+            """ post.track_title = track_title
             post.track_artist = track_artist
             post.track_album_cover = track_album_cover
-            post.track_audio = track_audio
+            post.track_audio = track_audio """
             post.author = request.user
             post.published_date = timezone.now()
             post.save()
             return redirect('home')
-    else:
-        form = ContentForm()
+        else:
+            form = ContentForm()
+            form.track_title = track_title
+            form.track_artist = track_artist
+            form.track_album_cover = track_album_cover
+            form.track_audio = track_audio
 
     """ track_title = request.POST.get('track_title')
     track_artist = request.POST.get('track_artist')
     track_album_cover = request.POST.get('track_album_cover')
     track_audio = request.POST.get('track_audio') """
-    return render(request, 'new.html', {'form': form, 'track_title':track_title, 'track_artist':track_artist, 'track_album_cover':track_album_cover, 'track_audio':track_audio})    
+    return render(request, 'new.html', {'form': form})    
 
 def search_home(request):
     return render(request, 'search_home.html')

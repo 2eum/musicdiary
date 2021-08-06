@@ -58,10 +58,7 @@ def search_query(request):
     results = sp.search(search_word)
     return render(request, 'search_home.html', {'results':results})
 
-<<<<<<< HEAD
-def detail(request):
-    return render(request, 'detail.html')
-=======
+
 def detail(request, index):
     post = get_object_or_404(Content, pk=index)
     return render(request, 'detail.html', {'post':post})
@@ -84,4 +81,3 @@ def delete(request, pk):
     post = get_object_or_404(Content, pk=pk)
     post.delete()
     return redirect('home')
->>>>>>> 992ff1a9c56d84ea70e4df1130f9fd8d75fb3072

@@ -29,8 +29,6 @@
 
 .player {
     text-align: center;
-    color: var(--mus-white);
-    background-color: #CCC0A3;
     margin: 12px;
 }
 
@@ -62,4 +60,8 @@ hr {
 
 .diary-content {
     font-size: 1.2em;
+}
+
+.edit {
+    color: pink;
 }

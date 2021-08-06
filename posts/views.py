@@ -36,15 +36,10 @@ def new(request):
             post.published_date = timezone.now()
             post.save()
             return redirect('home')
-        else:
-            form = ContentForm()
+    else:
+        form = ContentForm()
+
     return render(request, 'new.html', {'form': form, 'track_title':track_title, 'track_artist':track_artist, 'track_album_cover':track_album_cover, 'track_audio':track_audio})    
-
-def login(request):
-    return render(request, 'login.html')
-
-def register(request):
-    return render(request, 'register.html')
 
 def search_home(request):
     return render(request, 'search_home.html')

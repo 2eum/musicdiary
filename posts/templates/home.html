@@ -46,7 +46,14 @@
     <a class="mv5 dib b ph4 pv2 input-reset bn br2 grow pointer f4 create-btn hover-near-white" href="{% url 'search_home' %}">내 이야기 쓰러가기</a>
 </section>
 
-
+{% if user.is_authenticated %}
+    {{ user.nickname }}님 , 오늘도 담백한 감상을 남겨주세요 :)<br>
+    <a href="{% url 'logout' %}">로그아웃</a>
+{% else %}
+    <a href="{% url 'login' %}">로그인</a><br>
+    <a href="{% url 'signup' %}">이음 회원가입</a><br>
+{% endif %}
+  
 </main>
 
 
@@ -55,7 +62,6 @@
 {% endblock%}
 
 
-<h1>나의 이야기</h1>
 
-<a href="{% url 'search_home' %}">끄적끄적</a><br><br>
-<hr>
+
+

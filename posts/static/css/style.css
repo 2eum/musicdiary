@@ -91,7 +91,10 @@ a:visited {
 
 a:hover {
   color: #dba691;
-  transform: scale(1.1);
+}
+
+input:focus {
+  outline: none;
 }
 
 .dark-grey {
@@ -100,6 +103,7 @@ a:hover {
 
 .btn-beige {
   background-color: #ccc0a3;
+  color: var(--mus-white);
 }
 
 .btn-beige:hover {

@@ -14,7 +14,9 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/detail.css' %}" />
+
+    {% block add_css %} {% endblock add_css %}
+
     <title>Music Diary</title>
   </head>
   <body>

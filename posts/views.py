@@ -1,5 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
+from requests.api import get
 from .models import Content
 from .forms import ContentForm
 from spotipy.oauth2 import SpotifyClientCredentials
@@ -34,10 +35,15 @@ def new(request):
             post.published_date = timezone.now()
             post.save()
             return redirect('home')
-    else:
-        form = ContentForm()
-
+        else:
+            form = ContentForm()
     return render(request, 'new.html', {'form': form, 'track_title':track_title, 'track_artist':track_artist, 'track_album_cover':track_album_cover, 'track_audio':track_audio})    
+
+def login(request):
+    return render(request, 'login.html')
+
+def register(request):
+    return render(request, 'register.html')
 
 def search_home(request):
     return render(request, 'search_home.html')
@@ -52,5 +58,30 @@ def search_query(request):
     results = sp.search(search_word)
     return render(request, 'search_home.html', {'results':results})
 
+<<<<<<< HEAD
 def detail(request):
     return render(request, 'detail.html')
+=======
+def detail(request, index):
+    post = get_object_or_404(Content, pk=index)
+    return render(request, 'detail.html', {'post':post})
+
+def edit(request, index):
+    post = get_object_or_404(Content, pk=index)
+    if request.method == "POST":
+        form = ContentForm(request.POST, instance=post)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.published_date = timezone.now
+            post.save()
+            return redirect('detail', index=post.pk)
+    else:
+        form = ContentForm(instance=post)
+    return render(request, 'edit.html', {'form':form})
+
+def delete(request, pk):
+    post = get_object_or_404(Content, pk=pk)
+    post.delete()
+    return redirect('home')
+>>>>>>> 992ff1a9c56d84ea70e4df1130f9fd8d75fb3072

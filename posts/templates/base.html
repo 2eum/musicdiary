@@ -82,7 +82,7 @@
         <ul class="flex items-center">
           {% if user.is_authenticated %}
           <li class="mh3 f7">
-            <a href="#" class="dark-grey">내 페이지</a>
+            <a href="{% url 'mypage' username=user.nickname %}" class="dark-grey">내 페이지</a>
           </li>
           <li class="mh3 f7">
             <a href="{% url 'logout' %}" class="dark-grey">로그아웃</a>

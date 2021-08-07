@@ -79,3 +79,7 @@ def delete(request, pk):
     post = get_object_or_404(Content, pk=pk)
     post.delete()
     return redirect('home')
+
+def mypage(request, username):
+    posts = Content.objects.order_by('-pub_date').filter(writer=username)
+    return render(request, 'mypage.html', {'username':username, 'posts_list':posts})

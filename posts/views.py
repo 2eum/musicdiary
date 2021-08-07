@@ -15,7 +15,7 @@ def user_listview(request):
 
 def home(request):
     # 오늘 날짜 포스트만 불러오기
-    posts = Content.objects.filter(pub_date__date=timezone.datetime.today())
+    posts = Content.objects.filter(pub_date__date=timezone.datetime.today()).order_by('-pub_date')
     return render(request,'home.html',{'posts_list':posts})
 
 def new(request):

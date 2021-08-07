@@ -6,6 +6,7 @@ from .forms import ContentForm
 from spotipy.oauth2 import SpotifyClientCredentials
 import spotipy
 from django.conf import settings
+from accounts.models import CustomUser
 
 # Create your views here.
 
@@ -32,6 +33,7 @@ def new(request):
             post.track_artist = track_artist
             post.track_album_cover = track_album_cover
             post.track_audio = track_audio
+            post.writer = request.user.nickname
             post.author = request.user
             post.published_date = timezone.now()
             post.save()

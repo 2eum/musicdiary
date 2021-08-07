@@ -37,16 +37,22 @@ const renderCalendar = () => {
     dates.forEach((date, i) => {
         const condition = i >= firstDateIndex && i < lastDateIndex + 1 ?
             'this' : 'other';
-        dates[i] = `<div class="cal-date ${condition}">${date}</div>`;
+        dates[i] = 
+            `<div class="cal-date ${condition}">
+                ${date}</div>
+            `;
     });
 
     document.querySelector('.cal-dates').innerHTML = dates.join('');
 
     const today = new Date();
+    
     if(viewMonth === today.getMonth() && viewYear === today.getFullYear()) {
         for (let date of document.querySelectorAll('.this')) {
-            date.classList.add('today');
-            break;
+            if (+date.innerText === today.getDate()){
+                date.classList.add('today');
+                break;
+            }
         }
     }
 }; //renderCalendar

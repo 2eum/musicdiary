@@ -22,7 +22,7 @@
   <body>
     <!-- top-nav section -->
     <nav class="ph4 flex lh-solid w-100 justify-between pv1 items-center">
-      <a class="logo" href="#"
+      <a class="logo" href="{% url 'home' %}"
         ><img src="{% static 'images/logo.jpg' %}" alt="logo" class="br-100"
       /></a>
       <div class="menus flex justify-between items-center w-100 ml4">
@@ -76,13 +76,25 @@
             <a href="#" class="dark-grey">둘러보기</a>
           </li>
         </ul>
+        {% if user.is_authenticated %}
+        <p>{{ user.nickname }}님, 어서오세요</p>
+        {% endif %}
         <ul class="flex items-center">
+          {% if user.is_authenticated %}
           <li class="mh3 f7">
             <a href="#" class="dark-grey">내 페이지</a>
           </li>
           <li class="mh3 f7">
-            <a href="#" class="dark-grey">로그아웃</a>
+            <a href="{% url 'logout' %}" class="dark-grey">로그아웃</a>
           </li>
+          {% else %}
+          <li class="mh3 f7">
+            <a href="{% url 'login' %}" class="dark-grey">로그인</a>
+          </li>
+          <li class="mh3 f7">
+            <a href="{% url 'signup' %}" class="dark-grey">회원가입</a>
+          </li>
+          {% endif %}
         </ul>
       </div>
     </nav>

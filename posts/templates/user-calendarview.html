@@ -1,0 +1,65 @@
+{% extends './base.html' %} {% load static %} 
+{% block add_css %}
+
+<link rel="stylesheet" href="{% static 'css/calendarview.css' %}" />
+{% endblock add_css %}
+
+{% block content %}
+<!-- header-content section -->
+<section class="header-content flex flex-column items-center justify-around">
+  <span class="shady f3">{% now "Y" %}년 {% now "M" %} {% now "j" %}일</span>
+  <h1 class="greeting">
+    <span class="username">민세은</span>님, 오늘은 어떤 하루였나요?
+  </h1>
+  <button
+    class="create-btn w4-90 ph4 pv2 br3 lh-copy bn pointer grow"
+    type="submit"
+  >
+    일기 작성하기
+  </button>
+</section>
+
+<!-- main content-area -->
+<main>
+  <section class="content-area flex flex-column w-80 ml-auto mr-auto">
+    <h1 class="content-title">나의 일기</h1>
+    <ul class="viewtab flex justify-end">
+      <li class="view br pr3">
+        <a href="#">리스트 보기</a>
+      </li>
+      <li class="view"><a class="current" href="#">달력 보기</a></li>
+    </ul>
+
+<!-- calendar -->
+    <div class="calendar pb5">
+        <div class="calendar_header">
+            <div class="year-month f3">
+                <span class="cal-year"></span>년
+                <span class="cal-month"></span>월
+            </div>
+            <div class="calendar_nav">
+                <button class="nav-btn go-prev">&lt;</button>
+                <button class="nav-btn go-today">오늘</button>
+                <button class="nav-btn go-next">&gt;</button>
+            </div>
+        </div>
+        <div class="calendar_main">
+            <div class="cal-days">
+                <div class="cal-day">일</div>
+                <div class="cal-day">월</div>
+                <div class="cal-day">화</div>
+                <div class="cal-day">수</div>
+                <div class="cal-day">목</div>
+                <div class="cal-day">금</div>
+                <div class="cal-day">토</div>
+            </div>
+            <div class="cal-dates"></div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/calendar/calendar.js' %}"></script>
+    <!-- <script src="{% static 'js/calendar/reserve.js' %}"></script> -->
+  
+    </section>
+</main>
+{% endblock %}

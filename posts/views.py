@@ -12,6 +12,9 @@ from django.conf import settings
 def user_listview(request):
     return render(request, 'user-listview.html')
 
+def user_calendarview(request):
+    return render(request, 'user-calendarview.html')
+
 def home(request):
     # 오늘 날짜 포스트만 불러오기
     posts = Content.objects.filter(pub_date__date=timezone.datetime.today())

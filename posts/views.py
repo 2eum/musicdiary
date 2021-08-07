@@ -6,6 +6,7 @@ from .forms import ContentForm
 from spotipy.oauth2 import SpotifyClientCredentials
 import spotipy
 from django.conf import settings
+from accounts.models import CustomUser
 
 # Create your views here.
 
@@ -14,7 +15,7 @@ def user_listview(request):
 
 def home(request):
     # 오늘 날짜 포스트만 불러오기
-    posts = Content.objects.filter(pub_date__date=timezone.datetime.today())
+    posts = Content.objects.filter(pub_date__date=timezone.datetime.today()).order_by('-pub_date')
     return render(request,'home.html',{'posts_list':posts})
 
 def new(request):
@@ -32,6 +33,7 @@ def new(request):
             post.track_artist = track_artist
             post.track_album_cover = track_album_cover
             post.track_audio = track_audio
+            post.writer = request.user.nickname
             post.author = request.user
             post.published_date = timezone.now()
             post.save()
@@ -77,3 +79,7 @@ def delete(request, pk):
     post = get_object_or_404(Content, pk=pk)
     post.delete()
     return redirect('home')
+
+def mypage(request, username):
+    posts = Content.objects.order_by('-pub_date').filter(writer=username)
+    return render(request, 'mypage.html', {'username':username, 'posts_list':posts})

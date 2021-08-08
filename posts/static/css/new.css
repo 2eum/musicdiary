@@ -1,44 +1,46 @@
 /* new */
 
 .new-header {
-  text-align: center;
-  margin: 60px;
+  text-align: left;
+  margin: 60px 18%;
 }
 
 .new-header hr {
-  width: 14%;
-  text-align: center;
-  margin: 50px 43% 50px 43%;
+  width: 18%;
+  text-align: left;
+  /* margin: 40px 44% 50px 44%; */
+  margin: 30px 0 50px 0;
+
 }
 
 .new-content-area {
   margin: 0% 10%;
+  text-align: left;
 }
 
-.music-select-area {
-  /* width: 50%; */
+/* .music-select-area {
   position: relative;
   text-align: right;
-  margin: 0 10%;
-}
+  margin: 2% 10%;
+} */
 
 #search_query {
-  width: 30%;
+  width: 25%;
   height: 30px;
   padding: 5px;
-  margin: 10px 0;
+  margin: 10px 0 10px 10%;
 }
 
 .result_box {
   position: absolute;
-  width: 50%;
+  width: 30%;
   overflow: scroll;
   max-height: 30vh;
   max-width: 50vw;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
   background-color: var(--mus-white);
-  margin: 0 0 0 70%;
+  margin: 0 0 0 8%;
 }
 
 .result_box::-webkit-scrollbar {
@@ -95,13 +97,21 @@
 .music_choice {
   width: 30%;
   position: absolute;
-  margin: 0 0 0 70%;
-  text-align: left;
-  display: flex;
+  margin: 0% 25% 20% 25%;
+  text-align: center;
+  /* display: flex;
+  align-items: center; */
+  top: 100px;
 }
 
 .music_choice img {
   width: 20%;
+  border-radius : 100%;
+  margin-bottom: 5px;
+}
+
+.music_choice h4, h5 {
+  margin-bottom: 5px;
 }
 
 .post-form {
@@ -111,9 +121,9 @@
 }
 
 .form-title {
-  width: 30%;
+  width: 25%;
   height: 40px;
-  margin: 20px 0;
+  margin: 40px 0 20px 0;
   padding: 10px;
   color: var(--mus-neutralgray);
 }

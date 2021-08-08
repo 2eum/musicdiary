@@ -1,0 +1,94 @@
+/* new */
+
+.new-header {
+  text-align: center;
+  margin: 60px;
+}
+
+.new-header hr {
+  width: 14%;
+  text-align: center;
+  margin: 50px 43% 50px 43%;
+}
+
+.new-content-area {
+  margin: 0% 10%;
+}
+
+.music-select-area {
+  text-align: right;
+}
+
+.result_box {
+  overflow: scroll;
+  max-height: 30vh;
+  max-width: 50vw;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  box-shadow: 2px 2px 2px #000000;
+}
+
+.result_box::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
+}
+
+.result_entry {
+  position: relative;
+  z-index: 0;
+  display: flex;
+  justify-content: space-around;
+  width: 50vw;
+}
+
+.result_entry p {
+  z-index: 0;
+}
+
+.result_entry::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  height: 100%;
+  width: 100%;
+}
+
+.result_box .cover_container {
+  width: 40%;
+}
+
+.result_box img {
+  width: 100%;
+  object-fit: scale-down;
+}
+
+.music_choice img {
+  width: 200px;
+}
+
+.post-form {
+  width: 80vw;
+  height: 60vh;
+}
+
+.form-title {
+  width: 30%;
+  height: 40px;
+  margin: 20px 0;
+  padding: 10px;
+  color: var(--mus-neutralgray);
+}
+
+.form-body {
+  width: 80%;
+  height: 40vh;
+  margin: 20px 0;
+  padding: 12px;
+  border-color: var(--mus-neutralgray);
+}
+
+.save-btn {
+  color: var(--mus-white);
+  background-color: var(--mus-pink);
+}

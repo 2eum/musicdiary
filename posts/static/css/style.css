@@ -172,7 +172,6 @@ nav > .logo {
   color: var(--mus-white);
 }
 
-
 /* Main Content Area */
 .create-btn:visited {
   color: var(--mus-white);
@@ -222,6 +221,7 @@ nav > .logo {
 .music-title {
   font-family: Pretendard-Medium;
   color: var(--mus-darkgray);
+  margin: 12px;
 }
 
 .music-artist {

@@ -35,12 +35,31 @@ const renderCalendar = () => {
     const firstDateIndex = dates.indexOf(1);
     const lastDateIndex = dates.lastIndexOf(TLDate);
 
+    
+
     dates.forEach((date, i) => {
         const condition = i >= firstDateIndex && i < lastDateIndex + 1 ?
             'this' : 'other';
+        const dateClassSelector = `.on${viewYear}-${viewMonth+1}-${date}`
+        const entryImg = document.querySelectorAll(dateClassSelector);
+        let imgList = ""
+        entryImg.forEach(x =>{
+            if(x){
+                imgList += `
+            <a href="detail/${x.querySelector(".id").textContent}">
+            <img 
+            src=${x.querySelector(".img-src").textContent} 
+            alt="cover" class="ma1" />
+            </a>`
+            }
+        })
         dates[i] = 
             `<div class="cal-date ${condition}">
-                ${date}</div>
+                ${date}
+                <div class="flex covers">
+                    ${imgList}
+                </div>
+            </div>
             `;
     });
 

@@ -5,19 +5,15 @@
 {% endblock add_css %}
 
 {% block content %}
-<!-- header-content section -->
+<!-- Header content -->
 <section class="header-content flex flex-column items-center justify-around">
-  <span class="shady f3">{% now "Y" %}년 {% now "M" %} {% now "j" %}일</span>
-  <h1 class="greeting">
-    <span class="username">민세은</span>님, 오늘은 어떤 하루였나요?
-  </h1>
-  <button
-    class="create-btn w4-90 ph4 pv2 br3 lh-copy bn pointer grow"
-    type="submit"
-  >
-    일기 작성하기
-  </button>
-</section>
+    <span class="shady f3">{% now "Y" %}년 {% now "M" %} {% now "j" %}일</span>
+    <h1 class="greeting">
+      <span class="username">{{ username }}</span>님, 오늘은 어떤 하루였나요?
+    </h1>
+    <a class="mv5 dib b ph4 pv2 input-reset bn br2 grow pointer f4 create-btn hover-white" 
+    href="{% url 'new' %}">내 이야기 작성하기</a>
+  </section>
 
 <!-- main content-area -->
 <main>
@@ -25,9 +21,9 @@
     <h1 class="content-title">나의 일기</h1>
     <ul class="viewtab flex justify-end">
       <li class="view br pr3">
-        <a href="#">리스트 보기</a>
+        <a href="{% url 'mypage' username=user.nickname %}">리스트 보기</a>
       </li>
-      <li class="view"><a class="current" href="#">달력 보기</a></li>
+      <li class="view"><a class="current" href="">달력 보기</a></li>
     </ul>
 
 <!-- calendar -->
@@ -57,100 +53,14 @@
         </div>
     </div>
 
-    <script src="{% static 'js/calendar/calendar.js' %}"></script>
-    <!-- <script src="{% static 'js/calendar/reserve.js' %}"></script> -->
-  
-    <!-- <script type="text/javascript">
-        let date = new Date();
-        // let contents = JSON.parse("{{ contents_js | escapejs }}")
+{% for c in contents %}
+<div class='dn on{{c.pub_date|date:"Y-n-j"}}'>
+<p class="img-src">{{c.track_album_cover}}</p>
+<p class="id">{{c.id}}</p>
+</div>
 
-        const renderCalendar = () => {
-            const viewYear = date.getFullYear();
-            const viewMonth = date.getMonth();
-
-            document.querySelector('.cal-year').textContent = `${viewYear}`;
-            document.querySelector('.cal-month').textContent = `${viewMonth + 1}`;
-
-            const prevLast = new Date(viewYear, viewMonth, 0);
-            const thisLast = new Date(viewYear, viewMonth + 1, 0);
-
-            const PLDate = prevLast.getDate();
-            const PLDay = prevLast.getDay();
-
-            const TLDate = thisLast.getDate();
-            const TLDay = thisLast.getDay();
-
-            const prevDates = [];
-            const thisDates = [...Array(TLDate + 1).keys()].slice(1);
-            const nextDates = [];
-
-            if (PLDay !== 6) {
-                for (let i = 0; i < PLDay + 1; i++) {
-                    prevDates.unshift(PLDate - i);
-                }
-            }
-
-            for (let i = 1; i < 7 - TLDay; i++) {
-                nextDates.push(i);
-            }
-
-            const dates = prevDates.concat(thisDates, nextDates);
-            const firstDateIndex = dates.indexOf(1);
-            const lastDateIndex = dates.lastIndexOf(TLDate);
-
-            dates.forEach((date, i) => {
-                const condition = i >= firstDateIndex && i < lastDateIndex + 1 ?
-                    'this' : 'other';
-                dates[i] = 
-                    `<div class="cal-date ${condition}">
-                        ${date}</div>
-                    <img src="{{ post.track_album_cover }}">
-                    `;
-            });
-
-            document.querySelector('.cal-dates').innerHTML = dates.join('');
-            //div가 담긴 dates 배열을 통째로 cal-dates div에 옮겨심기
-
-
-
-            const today = new Date();
-            
-            if(viewMonth === today.getMonth() && viewYear === today.getFullYear()) {
-                for (let date of document.querySelectorAll('.this')) {
-                    if (+date.innerText === today.getDate()){
-                        date.classList.add('today');
-                        break;
-                    }
-                }
-            }
-        }; //renderCalendar
-
-
-        console.log(contents);
-
-        renderCalendar();
-
-        const prevMonth = () => {
-            date.setMonth(date.getMonth() - 1);
-            renderCalendar();
-        };
-
-        const nextMonth = () => {
-            date.setMonth(date.getMonth() + 1);
-            renderCalendar();
-        };
-
-        const goToday = () => {
-            date = new Date();
-            renderCalendar();
-        };
-    
-    
-    
-    </script> -->
-
-
-
+{% endfor %}
+        <script src="{% static 'js/calendar/calendar.js' %}"></script>
     </section>
 </main>
 {% endblock %}

@@ -1,16 +1,12 @@
 {% extends './base.html' %} {% load static %} {% block content %}
-<!-- header-content section -->
+
 <section class="header-content flex flex-column items-center justify-around">
   <span class="shady f3">{% now "Y" %}년 {% now "M" %} {% now "j" %}일</span>
   <h1 class="greeting">
     <span class="username">{{ username }}</span>님, 오늘은 어떤 하루였나요?
   </h1>
-  <button
-    class="create-btn w4-90 ph4 pv2 br3 lh-copy bn pointer grow"
-    type="submit"
-  >
-    일기 작성하기
-  </button>
+  <a class="mv5 dib b ph4 pv2 input-reset bn br2 grow pointer f4 create-btn hover-white" 
+  href="{% url 'new' %}">내 이야기 작성하기</a>
 </section>
 
 <!-- main content-area -->
@@ -33,7 +29,7 @@
             <img
               src="{{ post.track_album_cover }}"
               alt="album cover"
-              class="br-100"
+              class="w-100 br-100"
             />
             <p class="music-title f3">{{post.track_title}}</p>
             <p class="music-artist">{{post.track_artist}}</p>

@@ -1,18 +1,34 @@
-<h1>나의 이야기</h1>
+{% extends './base.html' %} {% load static %} {% block add_css %}
+<link rel="stylesheet" href="{% static 'css/new.css' %}" />
+{% endblock add_css %} {% block content %}
 
-<h3>선곡된 음악정보</h3>
-노래제목: {{track_title}} <br>
-아티스트명: {{track_artist}} <br>
-앨범커버: <img src="{{ track_album_cover }}" alt="album-image" width="50px"> <br>
-미리듣기: <audio src="{{ track_audio }}" controls>mp3-preview</audio> <br>
+<section class="new-header">
+  <h1>나의 이야기 작성하기</h1>
+  <hr color="#DEDBD8">
+</section>
 
-<form method="POST" class="post=form"> {% csrf_token %}
-    {{ form.as_p }}
-    
-    <input type="hidden" name="track_title" value="{{ track_title }}">
-    <input type="hidden" name="track_artist" value="{{ track_artist }}">
-    <input type="hidden" name="track_album_cover" value="{{ track_album_cover }}">
-    <input type="hidden" name="track_audio" value="{{ track_audio }}">
+<section class="new-content-area">
+  <div class="music-select-area">
+    <input
+      type="text"
+      name="search_query"
+      id="search_query"
+      placeholder="음악 검색"
+    />
+    <div class="result_box"></div>
+    <h3>선곡된 음악정보</h3>
+    <div class="music_choice"></div>
+  </div>
+  
+  
+  <form method="POST" class="post-form">
+    {% csrf_token %} {{ form.as_p }}
 
-    <button type="submit">작성 완료 !</button>
-</form>
+    <button class="save-btn mv5 dib b ph4 pv2 
+    input-reset bn br2 grow pointer f4 hover-white" type="submit">저장하기</button>
+  </form>
+
+</section>
+
+<script src="{% static 'js/spotify.js' %}"></script>
+{% endblock content %}

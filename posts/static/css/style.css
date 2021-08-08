@@ -231,7 +231,7 @@ nav > .logo {
 }
 
 .preview-music img {
-  width: 10%;
+  width: 100px;
   filter: drop-shadow(3px 3px 3px #000);
 }
 

@@ -1,5 +1,5 @@
 let date = new Date();
-let contents = JSON.parse("{{ contents_js | escapejs }}")
+// let contents = JSON.parse("{{ contents_js | escapejs }}")
 
 const renderCalendar = () => {
     const viewYear = date.getFullYear();
@@ -62,7 +62,7 @@ const renderCalendar = () => {
 }; //renderCalendar
 
 
-console.log(contents);
+// console.log(contents);
 
 renderCalendar();
 

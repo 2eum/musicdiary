@@ -16,9 +16,9 @@ class Content(models.Model):
     
 
     #calendar
-    is_published = models.BooleanField(default=True)
-    def to_json(self):
-        return {
-            "album_cover" : self.track_album_cover,
-            "pub_date" : self.pub_date
-        }
+    # is_published = models.BooleanField(default=True)
+    # def to_json(self):
+    #     return {
+    #         "album_cover" : self.track_album_cover,
+    #         "pub_date" : self.pub_date
+    #     }

@@ -16,16 +16,17 @@
       placeholder="음악 검색"
     />
     <div class="result_box"></div>
-    <h3>선곡된 음악정보</h3>
+    <!-- <h3 class="music_empty">음악을 선곡하세요</h3> -->
     <div class="music_choice"></div>
   </div>
   
   
   <form method="POST" class="post-form">
     {% csrf_token %} {{ form.as_p }}
-
-    <button class="save-btn mv5 dib b ph4 pv2 
+    <div class="btn-area">
+      <button class="save-btn mv3 dib b ph4 pv2 
     input-reset bn br2 grow pointer f4 hover-white" type="submit">저장하기</button>
+    </div>
   </form>
 
 </section>

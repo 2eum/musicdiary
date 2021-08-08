@@ -16,16 +16,29 @@
 }
 
 .music-select-area {
+  /* width: 50%; */
+  position: relative;
   text-align: right;
+  margin: 0 10%;
+}
+
+#search_query {
+  width: 30%;
+  height: 30px;
+  padding: 5px;
+  margin: 10px 0;
 }
 
 .result_box {
+  position: absolute;
+  width: 50%;
   overflow: scroll;
   max-height: 30vh;
   max-width: 50vw;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
-  box-shadow: 2px 2px 2px #000000;
+  background-color: var(--mus-white);
+  margin: 0 0 0 70%;
 }
 
 .result_box::-webkit-scrollbar {
@@ -37,7 +50,8 @@
   z-index: 0;
   display: flex;
   justify-content: space-around;
-  width: 50vw;
+  width: 25vw;
+  margin-top: 5px;
 }
 
 .result_entry p {
@@ -59,17 +73,41 @@
 }
 
 .result_box img {
-  width: 100%;
+  width: 70%;
   object-fit: scale-down;
 }
 
+.info .title, .artists {
+  text-align: left;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+/* .music_empty {
+  width: 30%;
+  height: 90%;
+  background-color: var(--mus-pink);
+  position: absolute;
+  margin: 16px 0 0 70%;
+  text-align: center;
+} */
+
+.music_choice {
+  width: 30%;
+  position: absolute;
+  margin: 0 0 0 70%;
+  text-align: left;
+  display: flex;
+}
+
 .music_choice img {
-  width: 200px;
+  width: 20%;
 }
 
 .post-form {
   width: 80vw;
   height: 60vh;
+  margin: 0 10%;
 }
 
 .form-title {
@@ -87,6 +125,11 @@
   padding: 12px;
   border-color: var(--mus-neutralgray);
 }
+
+/* .btn-area {
+  text-align: right;
+  margin-right: 20%;
+} */
 
 .save-btn {
   color: var(--mus-white);

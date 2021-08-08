@@ -42,6 +42,7 @@ def new(request):
             post.published_date = timezone.now()
             post.save()
             return redirect('home')
+            
     else:
         form = ContentForm()
 
@@ -55,10 +56,13 @@ def search_query(request):
     CLIENT_SECRET = getattr(settings, 'CLIENT_SECRET', None)
     client_credentials_manager = SpotifyClientCredentials(client_id=CLIENT_ID, client_secret=CLIENT_SECRET)
     sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
+
+    # request가 ajax를 통해서 이뤄질 때만 작동
     if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         search_word = json.load(request)['search-word']
         results = sp.search(search_word)
         return JsonResponse(results)
+    # TO-DO: 비정상 접근일 때 오류처리
     else:
         return JsonResponse(error)
 

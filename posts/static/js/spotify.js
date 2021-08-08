@@ -75,6 +75,7 @@ const showResult = (results) => {
     const info = document.createElement("div");
     info.classList.add("info");
     const title = document.createElement("p");
+    title.classList.add("title");
     title.textContent = `${title_src}`;
     info.appendChild(title);
 
@@ -82,6 +83,8 @@ const showResult = (results) => {
     artists_list.map((artist) => {
       artists.textContent += `${artist} `;
     });
+    artists.textContent.trim();
+    artists.classList.add("artists");
     info.appendChild(artists);
 
     const preview = document.createElement("audio");
@@ -94,44 +97,58 @@ const showResult = (results) => {
 };
 
 const addToForm = (e) => {
+  e.preventDefault();
   musicChoice.innerHTML = "";
-  search_query.value = "";
-  result_box.innerHTML = "";
   const music = e.target;
-  const cover = music.children[0].children[0];
-  const title = music.children[1].children[0];
-  const artist = music.children[1].children[1];
-  const preview = music.children[1].children[2];
+  const cover_url = music.querySelector("img").src;
+  const title = music.querySelector(".title").textContent;
+  const artist = music.querySelector(".artists").textContent.trim();
+  const preview_url = music.querySelector("audio").src;
 
-  musicChoice.appendChild(cover);
-  musicChoice.appendChild(title);
-  musicChoice.appendChild(artist);
-  musicChoice.appendChild(preview);
+  const selection_cover = document.createElement("img");
+  selection_cover.src = cover_url;
+  selection_cover.alt = title;
+  musicChoice.appendChild(selection_cover);
+
+  const selection_title = document.createElement("p");
+  selection_title.textContent = title;
+  musicChoice.appendChild(selection_title);
+
+  const selection_artist = document.createElement("p");
+  selection_artist.textContent = artist;
+  musicChoice.appendChild(selection_artist);
+
+  const selection_preview = document.createElement("audio");
+  selection_preview.src = preview_url;
+  selection_preview.controls = "controls";
+  musicChoice.appendChild(selection_preview);
 
   // hidden input으로 만들기
   const cover_input = document.createElement("input");
-  cover_input.value = cover.src;
+  cover_input.value = cover_url;
   cover_input.name = "track_album_cover";
   cover_input.type = "hidden";
   postForm.appendChild(cover_input);
 
   const title_input = document.createElement("input");
-  title_input.value = title.textContent;
+  title_input.value = title;
   title_input.name = "track_title";
   title_input.type = "hidden";
   postForm.appendChild(title_input);
 
   const artist_input = document.createElement("input");
-  artist_input.value = artist.textContent;
+  artist_input.value = artist;
   artist_input.name = "track_artist";
   artist_input.type = "hidden";
   postForm.appendChild(artist_input);
 
   const audio_input = document.createElement("input");
-  audio_input.value = preview.src;
+  audio_input.value = preview_url;
   audio_input.name = "track_audio";
   audio_input.type = "hidden";
   postForm.appendChild(audio_input);
+  search_query.value = "";
+  result_box.innerHTML = "";
 };
 
 // 검색창에 변화가 있을 때마다 요청 보냄

@@ -4,7 +4,7 @@ from requests.api import get
 from .models import Content
 from .forms import ContentForm
 from spotipy.oauth2 import SpotifyClientCredentials
-import spotipy
+import spotipy, json #calendar
 from django.conf import settings
 
 # Create your views here.
@@ -13,7 +13,15 @@ def user_listview(request):
     return render(request, 'user-listview.html')
 
 def user_calendarview(request):
-    return render(request, 'user-calendarview.html')
+
+    #calendar
+    contents = Content.objects.order_by('-pub_date').filter(is_published=True)
+    context={
+        'contents':contents,
+        'contents_js' : json.dumps([content.json() for content in contents])
+    }
+    return render(request, 'user-calendarview.html', context)
+
 
 def home(request):
     # 오늘 날짜 포스트만 불러오기

@@ -1,4 +1,5 @@
 let date = new Date();
+let contents = JSON.parse("{{ contents_js | escapejs }}")
 
 const renderCalendar = () => {
     const viewYear = date.getFullYear();
@@ -44,6 +45,9 @@ const renderCalendar = () => {
     });
 
     document.querySelector('.cal-dates').innerHTML = dates.join('');
+    //div가 담긴 dates 배열을 통째로 cal-dates div에 옮겨심기
+
+
 
     const today = new Date();
     
@@ -56,6 +60,9 @@ const renderCalendar = () => {
         }
     }
 }; //renderCalendar
+
+
+console.log(contents);
 
 renderCalendar();
 

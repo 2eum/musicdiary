@@ -13,3 +13,12 @@ class Content(models.Model):
     track_artist = models.CharField(max_length=500)
     track_album_cover = models.CharField(max_length=500)
     track_audio = models.CharField(max_length=500)
+    
+
+    #calendar
+    is_published = models.BooleanField(default=True)
+    def to_json(self):
+        return {
+            "album_cover" : self.track_album_cover,
+            "pub_date" : self.pub_date
+        }

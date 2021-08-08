@@ -60,6 +60,7 @@
   --mus-darkgray: #595756;
   --mus-little-darkgray: #787774;
   --mus-neutralgray: #9e9c9a;
+  --mus-lightgray: #d1cfcb;
   --mus-white: #fffcf8;
   --mus-pink: #ebb29b;
   --mus-brown: #998f76;
@@ -266,4 +267,24 @@ nav > .logo {
 
 .pink-emp {
   color: #dba691;
+}
+
+/* custom player */
+.custom-player {
+  color: var(--mus-white);
+  width: 100%;
+}
+
+.custom-player * {
+  color: var(--mus-white);
+}
+
+.stream-base {
+  background-color: var(--mus-lightgray);
+  width: 100%;
+}
+
+.stream-now {
+  background-color: var(--mus-white);
+  width: 0%;
 }

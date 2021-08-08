@@ -1,3 +1,5 @@
+from logging import error
+from django.http.response import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from requests.api import get
@@ -7,6 +9,8 @@ from spotipy.oauth2 import SpotifyClientCredentials
 import spotipy
 from django.conf import settings
 from accounts.models import CustomUser
+import json
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -38,8 +42,8 @@ def new(request):
             post.published_date = timezone.now()
             post.save()
             return redirect('home')
-        else:
-            form = ContentForm()
+    else:
+        form = ContentForm()
 
     return render(request, 'new.html', {'form': form, 'track_title':track_title, 'track_artist':track_artist, 'track_album_cover':track_album_cover, 'track_audio':track_audio})    
 
@@ -51,10 +55,12 @@ def search_query(request):
     CLIENT_SECRET = getattr(settings, 'CLIENT_SECRET', None)
     client_credentials_manager = SpotifyClientCredentials(client_id=CLIENT_ID, client_secret=CLIENT_SECRET)
     sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
-
-    search_word = request.POST.get('search-word')
-    results = sp.search(search_word)
-    return render(request, 'search_home.html', {'results':results})
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+        search_word = json.load(request)['search-word']
+        results = sp.search(search_word)
+        return JsonResponse(results)
+    else:
+        return JsonResponse(error)
 
 
 def detail(request, index):

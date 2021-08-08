@@ -1,18 +1,72 @@
-<h1>나의 이야기</h1>
+{% load static %}
+<head>
+  <style>
+    /* new */
+    .result_box {
+      overflow: scroll;
+      max-height: 30vh;
+      max-width: 50vw;
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+      box-shadow: 2px 2px 2px #000000;
+    }
 
-<h3>선곡된 음악정보</h3>
-노래제목: {{track_title}} <br>
-아티스트명: {{track_artist}} <br>
-앨범커버: <img src="{{ track_album_cover }}" alt="album-image" width="50px"> <br>
-미리듣기: <audio src="{{ track_audio }}" controls>mp3-preview</audio> <br>
+    .result_box::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera*/
+    }
 
-<form method="POST" class="post=form"> {% csrf_token %}
-    {{ form.as_p }}
-    
-    <input type="hidden" name="track_title" value="{{ track_title }}">
-    <input type="hidden" name="track_artist" value="{{ track_artist }}">
-    <input type="hidden" name="track_album_cover" value="{{ track_album_cover }}">
-    <input type="hidden" name="track_audio" value="{{ track_audio }}">
+    .result_entry {
+      position: relative;
+      z-index: 0;
+      display: flex;
+      justify-content: space-around;
+      width: 50vw;
+    }
+
+    .result_entry p {
+      z-index: 0;
+    }
+
+    .result_entry::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 5;
+      height: 100%;
+      width: 100%;
+    }
+
+    .result_box .cover_container {
+      width: 40%;
+    }
+
+    .result_box img {
+      width: 100%;
+      object-fit: scale-down;
+    }
+
+    .music_choice img {
+      width: 200px;
+    }
+  </style>
+  <h1>나의 이야기</h1>
+
+  <input
+    type="text"
+    name="search_query"
+    id="search_query"
+    placeholder="음악 검색"
+  />
+  <div class="result_box"></div>
+
+  <h3>선곡된 음악정보</h3>
+  <div class="music_choice"></div>
+
+  <form method="POST" class="post-form">
+    {% csrf_token %} {{ form.as_p }}
 
     <button type="submit">작성 완료 !</button>
-</form>
+  </form>
+  <script src="{% static 'js/spotify.js' %}"></script>
+</head>

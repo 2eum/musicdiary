@@ -2,7 +2,11 @@
 <link rel="stylesheet" href="{% static 'css/login-register.css' %}" />
 {% endblock add_css %} {% block content %}
 <main class="ph4 pv1 black-80 register-container">
-  <form method="post" class="measure-narrow center ph4 pv5">
+  <form
+    method="post"
+    action="{% url 'signup' %}"
+    class="measure-narrow center ph4 pv5"
+  >
     {% csrf_token %}
     <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
       <legend class="f3 ph0 mh0 pb3 tc fw5 brown">회원가입</legend>

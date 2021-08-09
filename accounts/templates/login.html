@@ -2,7 +2,11 @@
 <link rel="stylesheet" href="{% static 'css/login-register.css' %}" />
 {% endblock add_css %} {% block content %}
 <main class="ph4 pv3 mt4 black-80 login-container">
-  <form method="post" class="measure center tc pa4 login-card br2 shadow-3">
+  <form
+    method="post"
+    action="{% url 'login' %}"
+    class="measure center tc pa4 login-card br2 shadow-3"
+  >
     {% csrf_token %}
     <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
       <legend class="f3 ph0 mh0 tc brown mv3 pv2">

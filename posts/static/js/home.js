@@ -63,16 +63,14 @@ const customBtns = document.querySelectorAll(".action-btn");
 for (const customBtn of customBtns) {
   customBtn.addEventListener("click", (e) => {
     btnClass = e.target.classList;
-    const index = [...btnClass].find((e) => e.startsWith("btn-")).split("-")[1];
+    const srcPlayer = document.querySelector(`.current .media-player`);
     if (btnClass.contains("fa-play")) {
       btnClass.remove("fa-play");
       btnClass.add("fa-pause");
-      const srcPlayer = document.querySelector(`.src-${index}`);
       srcPlayer.play();
     } else {
       btnClass.remove("fa-pause");
       btnClass.add("fa-play");
-      const srcPlayer = document.querySelector(`.src-${index}`);
       srcPlayer.pause();
     }
   });

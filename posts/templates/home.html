@@ -24,13 +24,13 @@
                 />
                 <p class="music-title f5 ma2">{{post.track_title}}</p>
                 <p class="music-artist f7 mb3">{{post.track_artist}}</p>
-                <audio class="media-player dn src-{{ forloop.counter }}" src="{{ post.track_audio }}" controls>mp3-preview</audio>
+                <audio class="media-player dn" src="{{ post.track_audio }}" controls>mp3-preview</audio>
                 <div class="custom-player ph2 pv1 br3 tc">
                     <div class="stream-base h1 br-pill">
                         <div class="stream-now h1 br-pill"></div>
                     </div>
                     <div class="controls flex mt2 justify-center">
-                        <i class="fas fa-play action-btn btn-{{ forloop.counter }} pointer f4 mr2"></i>
+                        <i class="fas fa-play action-btn pointer f4 mr2"></i>
                         <p>
                             <span class="now-playing">0:00</span> / <span class="duration">0:30</span>
                         </p>

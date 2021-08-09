@@ -1,14 +1,20 @@
 {% extends './base.html' %} {% load static %} {% block add_css %}
 <link rel="stylesheet" href="{% static 'css/login-register.css' %}" />
 {% endblock add_css %} {% block content %}
-<main class="pa4 black-80 login-container">
-  <form method="post" class="measure-narrow center ph4 pv5 login-card br2">
+<main class="ph4 pv3 mt4 black-80 login-container">
+  <form
+    method="post"
+    action="{% url 'login' %}"
+    class="measure center tc pa4 login-card br2 shadow-3"
+  >
     {% csrf_token %}
     <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
-      <legend class="f3 ph0 mh0 tc">로그인</legend>
+      <legend class="f3 ph0 mh0 tc brown mv3 pv2">
+        MU:US에서 당신의 오늘을 기록하세요
+      </legend>
       <div class="mt3">
         <input
-          class="pa2 input-reset ba bg-transparent w-100 b--moon-gray fw3"
+          class="pa2 input-reset ba w-80 b--moon-gray fw3 br2 br-brown"
           type="text"
           name="username"
           id="username"
@@ -17,7 +23,7 @@
       </div>
       <div class="mv3">
         <input
-          class="b pa2 input-reset ba bg-transparent w-100 b--moon-gray fw3"
+          class="b pa2 input-reset ba w-80 b--moon-gray fw3 br2 br-brown"
           type="password"
           name="password"
           id="password"
@@ -30,14 +36,13 @@
     {% endif %}
     <div class="tc">
       <input
-        class="b ph3 pv2 input-reset bn br2 grow pointer f6 dib btn-beige"
+        class="b ph3 pv2 input-reset bn br2 grow pointer f6 dib btn-beige w-80"
         type="submit"
-        value="로그인"
+        value="로그인 하기"
       />
     </div>
-    <div class="lh-copy mt3 tc">
-      <a href="#0" class="f6 link dim black db mb2">회원가입</a>
-      <a href="#0" class="f6 link dim black db">비밀번호를 잊으셨나요?</a>
+    <div class="lh-copy mt3 w-80 center flex justify-end">
+      <a href="{% url 'signup' %}" class="f6 link dim black db mb2">회원가입</a>
     </div>
   </form>
 </main>

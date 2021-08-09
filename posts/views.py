@@ -75,32 +75,38 @@ def detail(request, index):
     return render(request, 'detail.html', {'post':post})
 
 def edit(request, index):
-    post = get_object_or_404(Content, pk=index)
+    if request.user.is_authenticated:
+        post = get_object_or_404(Content, pk=index)
+        if request.user.username == post.writerid:
 
-    track_title = request.POST.get('track_title')
-    track_artist = request.POST.get('track_artist')
-    track_album_cover = request.POST.get('track_album_cover')
-    track_audio = request.POST.get('track_audio')
+            track_title = request.POST.get('track_title')
+            track_artist = request.POST.get('track_artist')
+            track_album_cover = request.POST.get('track_album_cover')
+            track_audio = request.POST.get('track_audio')
 
-    if request.method == "POST":
-        form = ContentForm(request.POST, instance=post)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.track_title = track_title
-            post.track_artist = track_artist
-            post.track_album_cover = track_album_cover
-            post.track_audio = track_audio
-            post.author = request.user
-            post.published_date = timezone.now
-            post.save()
-            return redirect('detail', index=post.pk)
-    else:
-        form = ContentForm(instance=post)
+            if request.method == "POST":
+                form = ContentForm(request.POST, instance=post)
+                if form.is_valid():
+                    post = form.save(commit=False)
+                    post.track_title = track_title
+                    post.track_artist = track_artist
+                    post.track_album_cover = track_album_cover
+                    post.track_audio = track_audio
+                    post.author = request.user
+                    post.published_date = timezone.now
+                    post.save()
+                    return redirect('detail', index=post.pk)
+            else:
+                form = ContentForm(instance=post)
+        else:
+            return redirect('home')
     return render(request, 'edit.html', {'form':form, 'post':post})
 
 def delete(request, pk):
-    post = get_object_or_404(Content, pk=pk)
-    post.delete()
+    if request.user.is_authenticated:
+        post = get_object_or_404(Content, pk=pk)
+        if request.user.username == post.writerid:
+            post.delete()
     return redirect('home')
 
 def mypage(request):

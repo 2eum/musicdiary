@@ -20,6 +20,7 @@
           id="username"
           placeholder="아이디"
         />
+        {% if form.username.errors %} {{form.username.errors}} {% endif %}
       </div>
       <div class="mv3">
         <input
@@ -29,11 +30,11 @@
           id="password"
           placeholder="비밀번호"
         />
+        {% if form.password.errors %} {{form.password.errors}} {% endif %}
       </div>
+      {% if form.non_field_errors %} {{form.non_field_errors}} {% endif %}
     </fieldset>
-    {% if form.errors %}
-    <p class="red">{{form.errors}}</p>
-    {% endif %}
+
     <div class="tc">
       <input
         class="b ph3 pv2 input-reset bn br2 grow pointer f6 dib btn-beige w-80"
@@ -41,6 +42,7 @@
         value="로그인 하기"
       />
     </div>
+
     <div class="lh-copy mt3 w-80 center flex justify-end">
       <a href="{% url 'signup' %}" class="f6 link dim black db mb2">회원가입</a>
     </div>

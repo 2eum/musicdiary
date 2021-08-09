@@ -30,6 +30,7 @@
           id="username"
           placeholder="공백없이 영문, 숫자포함 6-12자"
         />
+        {% if form.username.errors %} {{form.username.errors}} {% endif %}
       </div>
       <div class="mb3 mt2">
         <label for="password1">비밀번호</label>
@@ -52,6 +53,7 @@
           id="password1"
           placeholder="공백없이 영문, 숫자포함 6-20자"
         />
+        {% if form.password1.errors %} {{form.password1.errors}} {% endif %}
       </div>
       <div class="mb3 mt2">
         <label for="password2">비밀번호 확인</label>
@@ -74,7 +76,9 @@
           id="password2"
           placeholder="비밀번호 재입력"
         />
+        {% if form.password2.errors %} {{form.password2.errors}} {% endif %}
       </div>
+
       <div class="mb3 mt2">
         <label for="user_email">이메일 주소</label>
         <input
@@ -95,7 +99,9 @@
           id="email"
           placeholder="이메일 주소"
         />
+        {% if form.user_email.errors %} {{form.user_email.errors}} {% endif %}
       </div>
+
       <div class="mb3 mt2">
         <label for="nickname">닉네임</label>
         <input
@@ -116,11 +122,10 @@
           id="nickname"
           placeholder="닉네임"
         />
+        {% if form.nickname.errors %} {{form.nickname.errors}} {% endif %}
       </div>
     </fieldset>
-    {% if form.errors %}
-    <p class="red">{{form.errors}}</p>
-    {% endif %}
+
     <div class="tc">
       <input
         class="b ph3 pv2 input-reset bn br2 grow pointer f6 dib btn-beige w-100"

@@ -87,16 +87,19 @@ def delete(request, pk):
     post.delete()
     return redirect('home')
 
-def mypage(request, username):
-    posts = Content.objects.order_by('-pub_date').filter(writer=username)
-    return render(request, 'user-listview.html', {'username':username, 'posts_list':posts})
+def mypage(request):
+    posts = Content.objects.order_by('-pub_date').filter(writer=request.user.nickname)
+    return render(request, 'user-listview.html', {'posts_list':posts})
 
 def user_listview(request):
     return render(request, 'user-listview.html')
 
-def user_calendarview(request, username):
+def user_calendarview(request):
 
     #calendar
-    contents = Content.objects.order_by('-pub_date').filter(writer=username)
-    return render(request, 'user-calendarview.html', {'username':username, 'contents': contents})
+    contents = Content.objects.order_by('-pub_date').filter(writer=request.user.nickname)
+    return render(request, 'user-calendarview.html', {'contents': contents})
 
+def detail_cal(request, index):
+    post = get_object_or_404(Content, pk=index)
+    return render(request, 'detail.html', {'post':post})

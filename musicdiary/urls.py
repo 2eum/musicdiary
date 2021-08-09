@@ -21,16 +21,20 @@ from posts import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name="home"),
+
+    # CRUD url
     path('new/', views.new, name="new"),
     path('detail/<int:index>', views.detail, name="detail"),
     path('edit/<int:index>', views.edit, name="edit"),
     path('detail/<int:pk>/delete', views.delete, name="delete"),
 
-
-    path('mypage/(?P<username>[-\w]+)/cal', views.user_calendarview, name="mypage-cal"),
+    # Mypage url
+    path('mypage/', views.mypage, name="mypage"),
+    path('mypage/cal', views.user_calendarview, name="mypage-cal"),
     #path('mypage/', views.user_listview),
-    path('mypage/(?P<username>[-\w]+)', views.mypage, name="mypage"),
-    path('search_home/', views.search_home, name="search_home"),
+    path('mypage/detail/<int:index>', views.detail_cal, name="detail_cal"),
+
+    #path('search_home/', views.search_home, name="search_home"),
     path('new/search_query/', views.search_query, name="search_query"),
     path('edit/search_query/', views.search_query, name="search_query"),
     path('detail/', views.detail, name="detail"),

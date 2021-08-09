@@ -25,7 +25,7 @@ def login_view(request):
                 login(request, user)
                 return redirect('home')
     else:       
-        form =AuthenticationForm()
+        form = AuthenticationForm()
     return render(request,'login.html',{'form':form})
 
 def logout_view(request):

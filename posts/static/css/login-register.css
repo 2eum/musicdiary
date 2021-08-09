@@ -23,3 +23,11 @@
 .br-brown {
   border-color: var(--mus-brown);
 }
+
+.errorlist li {
+  color: red;
+  font-size: 0.8rem;
+  max-width: 35ch;
+  margin: 0.5rem auto;
+  text-align: center;
+}

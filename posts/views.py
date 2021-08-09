@@ -20,31 +20,31 @@ def home(request):
     return render(request,'home.html',{'posts_list':posts})
 
 def new(request):
-    #if request.user.is_authenticated:
-    track_title = request.POST.get('track_title')
-    track_artist = request.POST.get('track_artist')
-    track_album_cover = request.POST.get('track_album_cover')
-    track_audio = request.POST.get('track_audio')
+    if request.user.is_authenticated:
+        track_title = request.POST.get('track_title')
+        track_artist = request.POST.get('track_artist')
+        track_album_cover = request.POST.get('track_album_cover')
+        track_audio = request.POST.get('track_audio')
 
-    if request.method == 'POST':
-        form = ContentForm(request.POST, request.FILES)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.track_title = track_title
-            post.track_artist = track_artist
-            post.track_album_cover = track_album_cover
-            post.track_audio = track_audio
-            post.writer = request.user.nickname
-            post.writerid = request.user.username
-            post.author = request.user
-            post.published_date = timezone.now()
-            post.save()
-            return redirect('home')
+        if request.method == 'POST':
+            form = ContentForm(request.POST, request.FILES)
+            if form.is_valid():
+                post = form.save(commit=False)
+                post.track_title = track_title
+                post.track_artist = track_artist
+                post.track_album_cover = track_album_cover
+                post.track_audio = track_audio
+                post.writer = request.user.nickname
+                post.writerid = request.user.username
+                post.author = request.user
+                post.published_date = timezone.now()
+                post.save()
+                return redirect('home')
             
+        else:
+            form = ContentForm()
     else:
-        form = ContentForm()
-    #else:
-        #return redirect('login')
+        return redirect('login')
 
     return render(request, 'new.html', {'form': form, 'track_title':track_title, 'track_artist':track_artist, 'track_album_cover':track_album_cover, 'track_audio':track_audio})    
 

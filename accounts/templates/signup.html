@@ -124,6 +124,7 @@
         />
         {% if form.nickname.errors %} {{form.nickname.errors}} {% endif %}
       </div>
+      {% if form.non_field_errors %} {{form.non_field_errors}} {% endif %}
     </fieldset>
 
     <div class="tc">

@@ -8,21 +8,46 @@
 </section>
 
 <section class="new-content-area">
-  <!-- <div class="music-select-area"> -->
-    <input
-      type="text"
-      name="search_query"
-      id="search_query"
-      placeholder="음악 검색.."
-    />
-    <div class="result_box"></div>
-    <!-- <h3 class="music_empty">음악을 선곡하세요</h3> -->
-    <div class="music_choice"></div>
-  <!-- </div> -->
-  
-  
-  <form method="POST" class="post-form">
-    {% csrf_token %} {{ form.as_p }}
+
+  <form method="POST" action="{% url 'new' %}" class="post-form">
+    {% csrf_token %}
+    <section class="form-top flex justify-between w-80 h3 items-center">
+      <input type="text" name="title" class="form-title h2 pa2 w-30" placeholder="제목"/>
+      <div class="music_choice w-40 dn mb2 justify-center">
+        <img src="" alt="" class="cover br-100 w-30 h-100 mw4">
+        <div class="info ml2">
+          <h4>선곡한 음악</h4>
+          <h4 class="title"></h4>
+          <h5 class="artist"></h5>
+          <div class="custom-player br2">
+            <div class="controls flex mt2 justify-center pa1 items-center">
+              <i class="fas fa-play action-btn pointer f6 mr2"></i>
+              <p>
+                <span class="now-playing">0:00</span> /
+                <span class="duration">0:30</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <audio class="media-player preview dn" src="">
+      </div>
+      <section class="music-container w-30">
+        <input
+          type="text"
+          name="search_query"
+          id="search_query"
+          placeholder="음악 검색.."
+          autocomplete="off"
+          class="w-100 h2 pa2"
+        />
+        <div class="result_box w-100"></div>
+      </section>
+    </section>
+    <textarea name="body" class="form-body w-80 mv4 pa2" placeholder="오늘의 이야기를 들려주세요"></textarea>
+    <input type="hidden" name="track_album_cover" value="">
+    <input type="hidden" name="track_title" value="">
+    <input type="hidden" name="track_artist" value="">
+    <input type="hidden" name="track_audio" value="">
     <div class="btn-area">
       <button class="save-btn mv3 dib b ph4 pv2 
     input-reset bn br2 grow pointer f4 hover-white" type="submit">저장하기</button>
@@ -32,4 +57,5 @@
 </section>
 
 <script src="{% static 'js/spotify.js' %}"></script>
+<script src="{% static 'js/player.js' %}"></script>
 {% endblock content %}

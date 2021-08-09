@@ -13,15 +13,16 @@
           pa4
         "
       >
-        <h2 class="f5 fw3 shady">
+        <h2 class="f4 mt2 mb2 fw3 shady o-70">
           {% now "Y" %}년 {% now "M" %} {% now "j" %}일
         </h2>
-        <p class="tc f2 mt3 fw4">누군가의 오늘 하루, 그리고 음악</p>
+        <p class=" home-title tc f1 mv3 fw4">누군가의 오늘 하루, 그리고 음악</p>
         <section class="switchables ph5">
           {% for post in posts_list %} {% if forloop.first %}
           <div
             class="
               preview
+              mt2
               ph4
               pv4
               entry
@@ -38,32 +39,32 @@
                 <i class="fas fa-chevron-left"></i>
               </button>
               <div class="preview-music w-30 ph3 pv3 tc h-100">
-              <img
-                src="{{ post.track_album_cover }}"
-                alt="album-image"
-                class="br-100 w-100"
-              />
-              <p class="music-title f5 ma2">{{post.track_title}}</p>
-              <p class="music-artist f7 mb3">{{post.track_artist}}</p>
-              <audio
-                class="media-player dn"
-                src="{{ post.track_audio }}"
-                controls
-              >
-                mp3-preview
-              </audio>
-              <div class="custom-player ph2 pv1 br3 tc">
-                <div class="stream-base h1 br-pill">
-                  <div class="stream-now h1 br-pill"></div>
+                <img
+                  src="{{ post.track_album_cover }}"
+                  alt="album-image"
+                  class="br-100 w-100"
+                />
+                <p class="music-title f5 ma2">{{post.track_title}}</p>
+                <p class="music-artist f7 mb3">{{post.track_artist}}</p>
+                <audio
+                  class="media-player dn"
+                  src="{{ post.track_audio }}"
+                  controls
+                >
+                  mp3-preview
+                </audio>
+                <div class="custom-player ph2 pv1 br3 tc">
+                  <div class="stream-base h1 br-pill">
+                    <div class="stream-now h1 br-pill"></div>
+                  </div>
+                  <div class="controls flex mt2 justify-center">
+                    <i class="fas fa-play action-btn pointer f4 mr2"></i>
+                    <p>
+                      <span class="now-playing">0:00</span> /
+                      <span class="duration">0:30</span>
+                    </p>
+                  </div>
                 </div>
-                <div class="controls flex mt2 justify-center">
-                  <i class="fas fa-play action-btn pointer f4 mr2"></i>
-                  <p>
-                    <span class="now-playing">0:00</span> /
-                    <span class="duration">0:30</span>
-                  </p>
-                </div>
-              </div>
             </div>
             <div
               class="
@@ -76,9 +77,9 @@
                 h-100
               "
             >
-              <h3 class="diary-title f3 mb3 h-25 fw3">
-                <a href="{% url 'detail' index=post.pk %}">{{post.title}}</a>
-                <span class="ml2 f7">작성자: {{post.writer}}</span>
+              <h3 class="diary-title f3 mt4 mb3 h-25 fw3">
+                <a href="{% url 'detail' index=post.pk %}">{{post.title|truncatechars_html:30}}</a>
+                <span class="ml2 f5 o-80">by {{post.writer}}</span>
               </h3>
               <p class="diary-text-preview lh-large h-75">{{post.body|truncatechars_html:150}}</p>
             </div>
@@ -92,8 +93,8 @@
       </article>
     </section>
   </section>
-  <section class="create-post mt5 tc">
-    <p class="f2">
+  <section class="create-post mv6 tc">
+    <p class="f2 mt6 mb4">
       오늘, <span class="pink-emp">당신의 하루</span>는 어떤
       <span class="pink-emp">선율</span>이었나요?
     </p>
@@ -114,7 +115,7 @@
         hover-white
       "
       href="{% url 'new' %}"
-      >내 이야기 작성하기</a
+      >내 이야기 쓰러 가기</a
     >
   </section>
 </main>

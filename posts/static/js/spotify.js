@@ -47,7 +47,7 @@ const sendSearchRequest = (e) => {
         showResult(results);
         let result_entries = document.querySelectorAll(".result_entry");
         for (const entry of result_entries) {
-          entry.addEventListener("click", (e) => addToForm(e));
+          entry.addEventListener("click", (e) => addToForm(e), {once: true});
         }
       });
   } else {
@@ -66,6 +66,7 @@ const showResult = (results) => {
     result_entry.classList.add("result_entry");
 
     const cover_container = document.createElement("div");
+    cover_container.classList.add('cover-img-container')
     const cover = document.createElement("img");
     cover.src = img_url;
     cover.alt = title_src;
@@ -87,10 +88,12 @@ const showResult = (results) => {
     artists.classList.add("artists");
     info.appendChild(artists);
 
-    const preview = document.createElement("audio");
-    preview.src = preview_url;
-    preview.controls = "controls";
-    info.appendChild(preview);
+    const preview_src = document.createElement('p');
+    preview_src.classList.add('dn');
+    preview_src.classList.add('preview-src');
+    preview_src.textContent = preview_url;
+    result_entry.appendChild(preview_src);
+
     result_entry.appendChild(info);
     result_box.appendChild(result_entry);
   });
@@ -98,55 +101,39 @@ const showResult = (results) => {
 
 const addToForm = (e) => {
   e.preventDefault();
-  musicChoice.innerHTML = "";
+  musicChoice.classList.remove('dn');
+  musicChoice.classList.add('flex');
   const music = e.target;
   const cover_url = music.querySelector("img").src;
   const title = music.querySelector(".title").textContent;
   const artist = music.querySelector(".artists").textContent.trim();
-  const preview_url = music.querySelector("audio").src;
-
-  const selection_cover = document.createElement("img");
+  const preview_url = music.querySelector(".preview-src").textContent
+  const selection_cover = musicChoice.querySelector(".cover");
   selection_cover.src = cover_url;
   selection_cover.alt = title;
-  musicChoice.appendChild(selection_cover);
 
-  const selection_title = document.createElement("h4");
+  const selection_title = musicChoice.querySelector(".title");
   selection_title.textContent = title;
-  musicChoice.appendChild(selection_title);
 
-  const selection_artist = document.createElement("h5");
+  const selection_artist = musicChoice.querySelector(".artist");
   selection_artist.textContent = artist;
-  musicChoice.appendChild(selection_artist);
 
-  const selection_preview = document.createElement("audio");
+  const selection_preview = musicChoice.querySelector(".preview");
   selection_preview.src = preview_url;
-  selection_preview.controls = "controls";
-  musicChoice.appendChild(selection_preview);
 
   // hidden input으로 만들기
-  const cover_input = document.createElement("input");
+  const cover_input = document.querySelector("input[name=track_album_cover]");
   cover_input.value = cover_url;
-  cover_input.name = "track_album_cover";
-  cover_input.type = "hidden";
-  postForm.appendChild(cover_input);
 
-  const title_input = document.createElement("input");
+  const title_input = document.querySelector("input[name=track_title]");
   title_input.value = title;
-  title_input.name = "track_title";
-  title_input.type = "hidden";
-  postForm.appendChild(title_input);
 
-  const artist_input = document.createElement("input");
+  const artist_input = document.querySelector("input[name=track_artist]");
   artist_input.value = artist;
-  artist_input.name = "track_artist";
-  artist_input.type = "hidden";
-  postForm.appendChild(artist_input);
 
-  const audio_input = document.createElement("input");
+  const audio_input = document.querySelector("input[name=track_audio]");
   audio_input.value = preview_url;
-  audio_input.name = "track_audio";
-  audio_input.type = "hidden";
-  postForm.appendChild(audio_input);
+
   search_query.value = "";
   result_box.innerHTML = "";
 };

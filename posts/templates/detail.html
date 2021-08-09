@@ -3,8 +3,12 @@
 <link rel="stylesheet" href="{% static 'css/detail.css' %}" />
 {% endblock add_css %} {% block content %}
 
+<section class="detail-header">
+    <a href="{% url 'mypage' %}" class="go-list dark-grey"><i class="fas fa-chevron-left mh1"></i> 내 글 목록으로</a> 
+</section>
+
 <!-- Music Area -->
-<section class="music-area w-80 ml-auto mr-auto mv3 flex justify-center">
+<section class="music-area w-70 ml-auto mr-auto mb3 flex justify-center">
     <div class="music flex ph3 pv3 mt5 justify-center">
         <img
             src="{{ post.track_album_cover }}"
@@ -14,9 +18,23 @@
         <div class="music-info mh3 mv3 pv4">
             <p class="music-title f3">{{post.track_title}}</p>
             <p class="music-artist">{{post.track_artist}}</p>
-            <audio class="player" src="{{ post.track_audio }}" controls>mp3-preview</audio>
-            <!-- <div class="player pv2">플레이어 들어갈 자리</div> -->
+            <audio class="media-player dn" src="{{ post.track_audio }}" controls>mp3-preview</audio>
+            <div class="custom-player ph2 pv1 br3 tc">
+                <div class="stream-base h1 br-pill">
+                <div class="stream-now h1 br-pill"></div>
+                </div>
+                <div class="controls flex mt2 justify-left">
+                  <i class="fas fa-play action-btn pointer f4 mr2"></i>
+                  <p>
+                    <span class="now-playing">0:00</span> /
+                    <span class="duration">0:30</span>
+                  </p>
+                </div>
+            </div>
         </div>
+        
+        
+        
     </div>
 </section>
 
@@ -24,7 +42,7 @@
 
 <!-- Diary Area -->
 <section class="diary-area">
-    <div class="diary w-80 ml-auto mr-auto">
+    <div class="diary w-70 ml-auto mr-auto">
         <h1 class="diary-title">
             {{post.title}}
         </h1>
@@ -41,14 +59,16 @@
         <p class="diary-content mv5 lh-large">
             {{post.body}}
         </p>
-        <ul class="tags flex justify-end w-100 mv3">
-            <li class="tag">#태그</li>
-            <li class="tag ml2">#태그</li>
-            <li class="tag mh2">#태그</li>
-        </ul>
-        <a class="mr3 mt2" href="{% url 'edit' index=post.pk %}">수정하기</a>
-        <a class="mt2" href="{% url 'delete' pk=post.pk %}">삭제하기</a>
+        <div class="btn-area">
+            <div class="btn-left">
+                <a class="mr3 mt2" href="{% url 'edit' index=post.pk %}">수정하기</a>
+                <a class="mr3 mt2" href="{% url 'delete' pk=post.pk %}">삭제하기</a>          
+            </div>
+
+        </div>
     </div>
 </section>
+
+<script src="{% static 'js/player.js' %}"></script>
 
 {% endblock %}

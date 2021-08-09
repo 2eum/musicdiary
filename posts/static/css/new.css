@@ -2,15 +2,14 @@
 
 .new-header {
   text-align: left;
-  margin: 60px 18%;
+  margin: 2rem auto;
+  width: 64%;
 }
 
 .new-header hr {
   width: 18%;
   text-align: left;
-  /* margin: 40px 44% 50px 44%; */
   margin: 30px 0 50px 0;
-
 }
 
 .new-content-area {
@@ -18,29 +17,14 @@
   text-align: left;
 }
 
-/* .music-select-area {
-  position: relative;
-  text-align: right;
-  margin: 2% 10%;
-} */
-
-#search_query {
-  width: 25%;
-  height: 30px;
-  padding: 5px;
-  margin: 10px 0 10px 10%;
-}
-
 .result_box {
   position: absolute;
-  width: 30%;
   overflow: scroll;
   max-height: 30vh;
-  max-width: 50vw;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
   background-color: var(--mus-white);
-  margin: 0 0 0 8%;
+  box-shadow: 0px 8px 6px rgba(0,0,0, 0.1);
 }
 
 .result_box::-webkit-scrollbar {
@@ -51,13 +35,8 @@
   position: relative;
   z-index: 0;
   display: flex;
-  justify-content: space-around;
-  width: 25vw;
-  margin-top: 5px;
-}
-
-.result_entry p {
-  z-index: 0;
+  padding: 0.5rem;
+  border-bottom: 1px solid #D1CFCB;
 }
 
 .result_entry::after {
@@ -70,48 +49,38 @@
   width: 100%;
 }
 
-.result_box .cover_container {
-  width: 40%;
+.result_entry:hover {
+  background-color: var(--mus-pink);
 }
 
-.result_box img {
-  width: 70%;
+.cover-img-container {
+  width: 30%
+}
+
+.result_entry img {
+  border-radius: 100%;
+  width: 100%;
   object-fit: scale-down;
 }
 
-.info .title, .artists {
+
+.result_entry .info .title, .artists {
   text-align: left;
-  margin-left: 10px;
-  margin-bottom: 10px;
+  margin: 0.5rem;
+  font-size: 0.8rem;
+  max-width: 20ch;
 }
 
-/* .music_empty {
-  width: 30%;
-  height: 90%;
-  background-color: var(--mus-pink);
-  position: absolute;
-  margin: 16px 0 0 70%;
-  text-align: center;
-} */
-
-.music_choice {
-  width: 30%;
-  position: absolute;
-  margin: 0% 25% 20% 25%;
-  text-align: center;
-  /* display: flex;
-  align-items: center; */
-  top: 100px;
-}
-
-.music_choice img {
-  width: 20%;
-  border-radius : 100%;
-  margin-bottom: 5px;
+.custom-player {
+  background-color: var(--mus-brown);
 }
 
 .music_choice h4, h5 {
   margin-bottom: 5px;
+}
+
+.music_choice img {
+  object-fit: scale-down;
 }
 
 .post-form {
@@ -121,27 +90,27 @@
 }
 
 .form-title {
-  width: 25%;
-  height: 40px;
-  margin: 40px 0 20px 0;
-  padding: 10px;
   color: var(--mus-neutralgray);
 }
 
 .form-body {
-  width: 80%;
   height: 40vh;
-  margin: 20px 0;
-  padding: 12px;
   border-color: var(--mus-neutralgray);
 }
 
-/* .btn-area {
-  text-align: right;
-  margin-right: 20%;
-} */
+.form-body:focus {
+  outline: none;
+}
 
 .save-btn {
   color: var(--mus-white);
   background-color: var(--mus-pink);
+}
+
+.music-container {
+  position: relative;
+}
+
+.result_box {
+  position: absolute;
 }

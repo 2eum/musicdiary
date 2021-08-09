@@ -232,7 +232,6 @@ nav > .logo {
 }
 
 .preview-music img {
-  width: 100px;
   filter: drop-shadow(3px 3px 3px #000);
 }
 
@@ -247,6 +246,7 @@ nav > .logo {
 
 .diary-text-preview {
   word-wrap: break-word;
+  overflow: hidden;
 }
 
 .lh-large {
@@ -287,5 +287,5 @@ nav > .logo {
 
 .stream-now {
   background-color: var(--mus-white);
-  width: 0%;
+  width: calc(20 / 3 * 1%);
 }

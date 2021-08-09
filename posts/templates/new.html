@@ -43,18 +43,16 @@
         <div class="result_box w-100"></div>
       </section>
     </section>
-    <textarea name="body" class="form-body w-80 mv4 pa2" placeholder="오늘의 이야기를 들려주세요"></textarea>
+    <textarea name="body" class="form-body w-80 mv4 pa2 lh-title" placeholder="오늘의 이야기를 들려주세요"></textarea>
     <input type="hidden" name="track_album_cover" value="">
     <input type="hidden" name="track_title" value="">
     <input type="hidden" name="track_artist" value="">
     <input type="hidden" name="track_audio" value="">
-    <div class="btn-area">
-      <button class="save-btn mv3 dib b ph4 pv2 
-    input-reset bn br2 grow pointer f4 hover-white" type="submit">저장하기</button>
-    </div>
-  </form>
 
-</section>
+<div class="btn-area">
+  <button class="save-btn mv3 dib b ph4 pv2 
+input-reset bn br2 grow pointer f4 hover-white" type="submit">저장하기</button>
+</div>
 
 <script src="{% static 'js/spotify.js' %}"></script>
 <script src="{% static 'js/player.js' %}"></script>

@@ -60,10 +60,12 @@
             {{post.body}}
         </p>
         <div class="btn-area">
-            <div class="btn-left">
-                <a class="mr3 mt2" href="{% url 'edit' index=post.pk %}">수정하기</a>
-                <a class="mr3 mt2" href="{% url 'delete' pk=post.pk %}">삭제하기</a>          
-            </div>
+            {% if user.nickname == post.writer%}
+                <div class="btn-left">
+                    <a class="mr3 mt2" href="{% url 'edit' index=post.pk %}">수정하기</a>
+                    <a class="mr3 mt2" href="{% url 'delete' pk=post.pk %}">삭제하기</a>          
+                </div>
+            {% endif %}
 
         </div>
     </div>

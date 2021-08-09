@@ -8,7 +8,7 @@
 }
 
 .login-card legend {
-  font-family: Pretendard-Bold;
+  font-family: Pretendard-Light;
 }
 
 .register-container {
@@ -22,6 +22,10 @@
 
 .br-brown {
   border-color: var(--mus-brown);
+}
+
+.br-light-gray {
+  border-color: var(--mus-lightgray);
 }
 
 .errorlist li {

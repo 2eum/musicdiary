@@ -90,7 +90,7 @@
 }
 
 .form-title {
-  color: var(--mus-neutralgray);
+  border-color: var(--mus-neutralgray);
 }
 
 .form-body {

@@ -124,7 +124,7 @@ nav {
 }
 
 nav > .logo {
-  width: 3rem;
+  width: 6.3rem;
 }
 
 .logo img {
@@ -228,7 +228,8 @@ footer {
 
 .home-content-container .preview {
   width: 60vw;
-  height: 30vh;
+  /* height: 35vh; */
+  height: 350px;
 }
 
 .home-title {
@@ -292,13 +293,10 @@ footer {
   color: #dba691;
 }
 
-/* .create-post {
-  background: linear-gradient(
-    180deg,
-    #ffffff,
-    var(--mus-white)
-  );
-} */
+
+.create-post p {
+  font-family: Pretendard-ExtraLight;
+}
 
 /* custom player */
 .custom-player {

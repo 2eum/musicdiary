@@ -20,28 +20,31 @@ def home(request):
     return render(request,'home.html',{'posts_list':posts})
 
 def new(request):
-    
-    track_title = request.POST.get('track_title')
-    track_artist = request.POST.get('track_artist')
-    track_album_cover = request.POST.get('track_album_cover')
-    track_audio = request.POST.get('track_audio')
+    if request.user.is_authenticated:
+        track_title = request.POST.get('track_title')
+        track_artist = request.POST.get('track_artist')
+        track_album_cover = request.POST.get('track_album_cover')
+        track_audio = request.POST.get('track_audio')
 
-    if request.method == 'POST':
-        form = ContentForm(request.POST, request.FILES)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.track_title = track_title
-            post.track_artist = track_artist
-            post.track_album_cover = track_album_cover
-            post.track_audio = track_audio
-            post.writer = request.user.nickname
-            post.author = request.user
-            post.published_date = timezone.now()
-            post.save()
-            return redirect('home')
+        if request.method == 'POST':
+            form = ContentForm(request.POST, request.FILES)
+            if form.is_valid():
+                post = form.save(commit=False)
+                post.track_title = track_title
+                post.track_artist = track_artist
+                post.track_album_cover = track_album_cover
+                post.track_audio = track_audio
+                post.writer = request.user.nickname
+                post.writerid = request.user.username
+                post.author = request.user
+                post.published_date = timezone.now()
+                post.save()
+                return redirect('home')
             
+        else:
+            form = ContentForm()
     else:
-        form = ContentForm()
+        return redirect('login')
 
     return render(request, 'new.html', {'form': form, 'track_title':track_title, 'track_artist':track_artist, 'track_album_cover':track_album_cover, 'track_audio':track_audio})    
 
@@ -65,30 +68,52 @@ def search_query(request):
 
 
 def detail(request, index):
-    post = get_object_or_404(Content, pk=index)
+    if request.user.is_authenticated:
+        post = get_object_or_404(Content, pk=index)
+    else:
+        return redirect('login')
     return render(request, 'detail.html', {'post':post})
 
 def edit(request, index):
-    post = get_object_or_404(Content, pk=index)
-    if request.method == "POST":
-        form = ContentForm(request.POST, instance=post)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.author = request.user
-            post.published_date = timezone.now
-            post.save()
-            return redirect('detail', index=post.pk)
-    else:
-        form = ContentForm(instance=post)
-    return render(request, 'edit.html', {'form':form})
+    if request.user.is_authenticated:
+        post = get_object_or_404(Content, pk=index)
+        if request.user.username == post.writerid:
+
+            track_title = request.POST.get('track_title')
+            track_artist = request.POST.get('track_artist')
+            track_album_cover = request.POST.get('track_album_cover')
+            track_audio = request.POST.get('track_audio')
+
+            if request.method == "POST":
+                form = ContentForm(request.POST, instance=post)
+                if form.is_valid():
+                    post = form.save(commit=False)
+                    post.track_title = track_title
+                    post.track_artist = track_artist
+                    post.track_album_cover = track_album_cover
+                    post.track_audio = track_audio
+                    post.author = request.user
+                    post.published_date = timezone.now
+                    post.save()
+                    return redirect('detail', index=post.pk)
+            else:
+                form = ContentForm(instance=post)
+        else:
+            return redirect('home')
+    return render(request, 'edit.html', {'form':form, 'post':post})
 
 def delete(request, pk):
-    post = get_object_or_404(Content, pk=pk)
-    post.delete()
+    if request.user.is_authenticated:
+        post = get_object_or_404(Content, pk=pk)
+        if request.user.username == post.writerid:
+            post.delete()
     return redirect('home')
 
 def mypage(request):
-    posts = Content.objects.order_by('-pub_date').filter(writer=request.user.nickname)
+    if request.user.is_authenticated:
+        posts = Content.objects.order_by('-pub_date').filter(writerid=request.user.username)
+    else:
+        return redirect('login')
     return render(request, 'user-listview.html', {'posts_list':posts})
 
 def user_listview(request):
@@ -97,7 +122,7 @@ def user_listview(request):
 def user_calendarview(request):
 
     #calendar
-    contents = Content.objects.order_by('-pub_date').filter(writer=request.user.nickname)
+    contents = Content.objects.order_by('-pub_date').filter(writerid=request.user.username)
     return render(request, 'user-calendarview.html', {'contents': contents})
 
 def detail_cal(request, index):

@@ -222,6 +222,7 @@ nav > .logo {
 .music-title {
   font-family: Pretendard-Medium;
   color: var(--mus-darkgray);
+  margin: 12px;
 }
 
 .music-artist {
@@ -231,7 +232,7 @@ nav > .logo {
 }
 
 .preview-music img {
-  width: 100%;
+  width: 100px;
   filter: drop-shadow(3px 3px 3px #000);
 }
 

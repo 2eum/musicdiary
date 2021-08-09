@@ -110,11 +110,11 @@ const addToForm = (e) => {
   selection_cover.alt = title;
   musicChoice.appendChild(selection_cover);
 
-  const selection_title = document.createElement("p");
+  const selection_title = document.createElement("h4");
   selection_title.textContent = title;
   musicChoice.appendChild(selection_title);
 
-  const selection_artist = document.createElement("p");
+  const selection_artist = document.createElement("h5");
   selection_artist.textContent = artist;
   musicChoice.appendChild(selection_artist);
 

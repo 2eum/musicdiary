@@ -100,3 +100,6 @@ def user_calendarview(request):
     contents = Content.objects.order_by('-pub_date').filter(writer=request.user.nickname)
     return render(request, 'user-calendarview.html', {'contents': contents})
 
+def detail_cal(request, index):
+    post = get_object_or_404(Content, pk=index)
+    return render(request, 'detail.html', {'post':post})

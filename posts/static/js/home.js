@@ -43,3 +43,35 @@ for (const prev of prevBtns) {
     prevArticle();
   });
 }
+
+// custom player
+const players = document.querySelectorAll(".media-player");
+
+for (const player of players) {
+  player.ontimeupdate = (e) => {
+    const nowPlaying = document.querySelector(".current .now-playing");
+    const playerBar = document.querySelector(".current .stream-now");
+    const { currentTime, duration } = e.srcElement;
+    playerBar.style.width = `${(currentTime / duration) * 100}%`;
+    seconds = Math.floor(currentTime);
+    if (seconds < 10) seconds = "0" + seconds;
+    nowPlaying.innerHTML = "0:" + seconds;
+  };
+}
+
+const customBtns = document.querySelectorAll(".action-btn");
+for (const customBtn of customBtns) {
+  customBtn.addEventListener("click", (e) => {
+    btnClass = e.target.classList;
+    const srcPlayer = document.querySelector(`.current .media-player`);
+    if (btnClass.contains("fa-play")) {
+      btnClass.remove("fa-play");
+      btnClass.add("fa-pause");
+      srcPlayer.play();
+    } else {
+      btnClass.remove("fa-pause");
+      btnClass.add("fa-play");
+      srcPlayer.pause();
+    }
+  });
+}

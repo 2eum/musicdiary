@@ -35,8 +35,8 @@ urlpatterns = [
     path('mypage/detail/<int:index>', views.detail_cal, name="detail_cal"),
 
     #path('search_home/', views.search_home, name="search_home"),
-    #path('new/search_query/', views.search_query, name="search_query"),
-    #path('edit/search_query/', views.search_query, name="search_query"),
+    path('new/search_query/', views.search_query, name="search_query"),
+    path('edit/search_query/', views.search_query, name="search_query"),
     path('detail/', views.detail, name="detail"),
     path('accounts/', include('accounts.urls')),
 ]

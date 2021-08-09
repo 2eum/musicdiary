@@ -1,0 +1,66 @@
+{% extends './base.html' %} {% load static %} 
+{% block add_css %}
+
+<link rel="stylesheet" href="{% static 'css/calendarview.css' %}" />
+{% endblock add_css %}
+
+{% block content %}
+<!-- Header content -->
+<section class="header-content flex flex-column items-center justify-around">
+    <span class="shady f3">{% now "Y" %}년 {% now "M" %} {% now "j" %}일</span>
+    <h1 class="greeting">
+      <span class="username">{{ username }}</span>님, 오늘은 어떤 하루였나요?
+    </h1>
+    <a class="mv5 dib b ph4 pv2 input-reset bn br2 grow pointer f4 create-btn hover-white" 
+    href="{% url 'new' %}">내 이야기 작성하기</a>
+  </section>
+
+<!-- main content-area -->
+<main>
+  <section class="content-area flex flex-column w-80 ml-auto mr-auto">
+    <h1 class="content-title">나의 일기</h1>
+    <ul class="viewtab flex justify-end">
+      <li class="view br pr3">
+        <a href="{% url 'mypage' username=user.nickname %}">리스트 보기</a>
+      </li>
+      <li class="view"><a class="current" href="">달력 보기</a></li>
+    </ul>
+
+<!-- calendar -->
+    <div class="calendar pb5">
+        <div class="calendar_header">
+            <div class="year-month f3">
+                <span class="cal-year"></span>년
+                <span class="cal-month"></span>월
+            </div>
+            <div class="cal-nav">
+                <button class="nav-btn go-prev" onclick="prevMonth()">&lt;</button>
+                <button class="nav-btn go-today" onclick="goToday()">오늘</button>
+                <button class="nav-btn go-next" onclick="nextMonth()">&gt;</button>
+            </div>
+        </div>
+        <div class="calendar_main">
+            <div class="cal-days">
+                <div class="cal-day">일</div>
+                <div class="cal-day">월</div>
+                <div class="cal-day">화</div>
+                <div class="cal-day">수</div>
+                <div class="cal-day">목</div>
+                <div class="cal-day">금</div>
+                <div class="cal-day">토</div>
+            </div>
+            <div class="cal-dates"></div>
+        </div>
+    </div>
+
+{% for c in contents %}
+<div class='dn on{{c.pub_date|date:"Y-n-j"}}'>
+<p class="img-src">{{c.track_album_cover}}</p>
+<p class="id">{{c.id}}</p>
+</div>
+
+{% endfor %}
+        <script src="{% static 'js/calendar/calendar.js' %}"></script>
+    </section>
+</main>
+{% endblock %}

@@ -100,6 +100,8 @@ def edit(request, index):
                 form = ContentForm(instance=post)
         else:
             return redirect('home')
+    else:
+        return redirect('home')
     return render(request, 'edit.html', {'form':form, 'post':post})
 
 def delete(request, pk):

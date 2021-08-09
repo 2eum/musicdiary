@@ -46,8 +46,10 @@
             <li class="tag ml2">#태그</li>
             <li class="tag mh2">#태그</li>
         </ul>
-        <a class="mr3 mt2" href="{% url 'edit' index=post.pk %}">수정하기</a>
-        <a class="mt2" href="{% url 'delete' pk=post.pk %}">삭제하기</a>
+        {% if user.username == post.writerid %}
+            <a class="mr3 mt2" href="{% url 'edit' index=post.pk %}">수정하기</a>
+            <a class="mt2" href="{% url 'delete' pk=post.pk %}">삭제하기</a>
+        {% endif %}
     </div>
 </section>
 

@@ -13,10 +13,10 @@
 
 <h3>선곡된 음악정보</h3>
 <div class="music_choice">
-  <img src="" alt="" />
-  <p></p>
-  <p></p>
-  <audio src="" controls></audio>
+  <img src="{{post.track_album_cover}}" alt="album-cover" />
+  <p>{{post.track_title}}</p>
+  <p>{{post.track_artist}}</p>
+  <audio src="{{post.track_audio}}" controls></audio>
 </div>
 
 <form method="POST" class="post-form">

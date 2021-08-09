@@ -77,7 +77,11 @@
               "
             >
               <h3 class="diary-title f3 mb3 h-25 fw3">
-                <a href="{% url 'detail' index=post.pk %}">{{post.title}}</a>
+                {% if user.is_authenticated %}
+                  <a href="{% url 'detail' index=post.pk %}">{{post.title}}</a>
+                {% else %}
+                  <a href="{% url 'login' %}">{{post.title}}</a>
+                {% endif %}
                 <span class="ml2 f7">작성자: {{post.writer}}</span>
               </h3>
               <p class="diary-text-preview lh-large h-75">{{post.body|truncatechars_html:150}}</p>
@@ -97,6 +101,7 @@
       오늘, <span class="pink-emp">당신의 하루</span>는 어떤
       <span class="pink-emp">선율</span>이었나요?
     </p>
+    {% if user.is_authenticated %}
     <a
       class="
         mv5
@@ -116,6 +121,24 @@
       href="{% url 'new' %}"
       >내 이야기 작성하기</a
     >
+    {% else %}
+      <a class="
+      mv5
+      dib
+      b
+      ph4
+      pv2
+      input-reset
+      bn
+      br2
+      grow
+      pointer
+      f4
+      create-btn
+      hover-white
+    "
+      href="{% url 'login' %}">내 이야기 작성하기</a>
+    {% endif %}
   </section>
 </main>
 

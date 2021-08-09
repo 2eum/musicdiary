@@ -35,6 +35,7 @@ def new(request):
             post.track_album_cover = track_album_cover
             post.track_audio = track_audio
             post.writer = request.user.nickname
+            post.writerid = request.user.username
             post.author = request.user
             post.published_date = timezone.now()
             post.save()
@@ -70,7 +71,7 @@ def detail(request, index):
 
 def edit(request, index):
     post = get_object_or_404(Content, pk=index)
-    
+
     track_title = request.POST.get('track_title')
     track_artist = request.POST.get('track_artist')
     track_album_cover = request.POST.get('track_album_cover')
@@ -98,7 +99,7 @@ def delete(request, pk):
     return redirect('home')
 
 def mypage(request):
-    posts = Content.objects.order_by('-pub_date').filter(writer=request.user.nickname)
+    posts = Content.objects.order_by('-pub_date').filter(writerid=request.user.username)
     return render(request, 'user-listview.html', {'posts_list':posts})
 
 def user_listview(request):
@@ -107,7 +108,7 @@ def user_listview(request):
 def user_calendarview(request):
 
     #calendar
-    contents = Content.objects.order_by('-pub_date').filter(writer=request.user.nickname)
+    contents = Content.objects.order_by('-pub_date').filter(writerid=request.user.username)
     return render(request, 'user-calendarview.html', {'contents': contents})
 
 def detail_cal(request, index):

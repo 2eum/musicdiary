@@ -1,50 +1,112 @@
 {% extends './base.html' %} {% load static %} {% block add_css %}
 <link rel="stylesheet" href="{% static 'css/login-register.css' %}" />
 {% endblock add_css %} {% block content %}
-<main class="pa4 black-80 login-container">
-  <form method="post" class="measure-narrow center ph4 pv5 login-card br2">
+<main class="ph4 pv1 black-80 register-container">
+  <form method="post" class="measure-narrow center ph4 pv5">
     {% csrf_token %}
     <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
-      <legend class="f3 ph0 mh0 tc">회원가입</legend>
-      <div class="mt3">
+      <legend class="f3 ph0 mh0 pb3 tc fw5 brown">회원가입</legend>
+      <div class="pt4 mb3 bt bw1 br-brown">
+        <label for="username">아이디</label>
         <input
-          class="pa2 input-reset ba bg-transparent w-100 b--moon-gray fw3"
+          class="
+            pa2
+            input-reset
+            ba
+            bg-transparent
+            w-100
+            b--moon-gray
+            fw3
+            mt2
+            br2
+            f6
+          "
           type="text"
           name="username"
           id="username"
-          placeholder="아이디"
+          placeholder="공백없이 영문, 숫자포함 6-12자"
         />
       </div>
-      <div class="mv3">
+      <div class="mb3 mt2">
+        <label for="password1">비밀번호</label>
         <input
-          class="b pa2 input-reset ba bg-transparent w-100 b--moon-gray fw3"
+          class="
+            b
+            pa2
+            input-reset
+            ba
+            bg-transparent
+            w-100
+            b--moon-gray
+            fw3
+            mt2
+            br2
+            f6
+          "
           type="password"
           name="password1"
           id="password1"
-          placeholder="비밀번호"
+          placeholder="공백없이 영문, 숫자포함 6-20자"
         />
       </div>
-      <div class="mv3">
+      <div class="mb3 mt2">
+        <label for="password2">비밀번호 확인</label>
         <input
-          class="b pa2 input-reset ba bg-transparent w-100 b--moon-gray fw3"
+          class="
+            b
+            pa2
+            input-reset
+            ba
+            bg-transparent
+            w-100
+            b--moon-gray
+            fw3
+            mt2
+            br2
+            f6
+          "
           type="password"
           name="password2"
           id="password2"
-          placeholder="비밀번호 확인"
+          placeholder="비밀번호 재입력"
         />
       </div>
-      <div class="mt3">
+      <div class="mb3 mt2">
+        <label for="user_email">이메일 주소</label>
         <input
-          class="pa2 input-reset ba bg-transparent w-100 b--moon-gray fw3"
+          class="
+            pa2
+            input-reset
+            ba
+            bg-transparent
+            w-100
+            b--moon-gray
+            fw3
+            mt2
+            br2
+            f6
+          "
           type="email"
           name="user_email"
           id="email"
           placeholder="이메일 주소"
         />
       </div>
-      <div class="mt3">
+      <div class="mb3 mt2">
+        <label for="nickname">닉네임</label>
         <input
-          class="pa2 input-reset ba bg-transparent w-100 b--moon-gray fw3"
+          class="
+            pa2
+            input-reset
+            ba
+            bg-transparent
+            w-100
+            b--moon-gray
+            fw3
+            mt2
+            br2
+            f6
+          "
           type="text"
           name="nickname"
           id="nickname"
@@ -57,9 +119,9 @@
     {% endif %}
     <div class="tc">
       <input
-        class="b ph3 pv2 input-reset bn br2 grow pointer f6 dib btn-beige"
+        class="b ph3 pv2 input-reset bn br2 grow pointer f6 dib btn-beige w-100"
         type="submit"
-        value="회원가입"
+        value="가입하기"
       />
     </div>
     <div class="lh-copy mt3 tc">

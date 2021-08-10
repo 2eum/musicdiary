@@ -7,7 +7,13 @@
 </section>
 
 <section class="new-content-area">
-
+  {% if messages %}
+  <ul class="errorlist">
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
   <form method="POST" action="{% url 'edit' index=post.pk %}" class="post-form">
     {% csrf_token %}
     <section class="form-top flex justify-between w-80 h3 items-center">

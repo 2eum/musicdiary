@@ -127,16 +127,12 @@ def mypage(request):
         posts = Content.objects.order_by('-pub_date').filter(writerid=request.user.username)
     else:
         return redirect('login')
-    return render(request, 'user-listview.html', {'posts_list':posts})
-
-def user_listview(request):
-    return render(request, 'user-listview.html')
+    return render(request, 'mylist.html', {'posts_list':posts})
 
 def user_calendarview(request):
-
     #calendar
     contents = Content.objects.order_by('-pub_date').filter(writerid=request.user.username)
-    return render(request, 'user-calendarview.html', {'contents': contents})
+    return render(request, 'mycalendar.html', {'contents': contents})
 
 def detail_cal(request, index):
     post = get_object_or_404(Content, pk=index)

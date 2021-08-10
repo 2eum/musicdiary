@@ -1,4 +1,3 @@
-
 const player = document.querySelector(".media-player");
 const nowPlaying = document.querySelector(".now-playing");
 const playerBar = document.querySelector(".stream-now");
@@ -6,7 +5,10 @@ const playerBar = document.querySelector(".stream-now");
 player.ontimeupdate = (e) => {
   const { currentTime, duration } = e.srcElement;
   if (playerBar) {
-    playerBar.style.width = `${(currentTime / duration) * 100}%`;
+    playerBar.style.width =
+      currentTime / duration > 3 / 30
+        ? `${(currentTime / duration) * 100}%`
+        : `${(2 / 30) * 100}%`;
   }
   seconds = Math.floor(currentTime);
   if (seconds < 10) seconds = "0" + seconds;

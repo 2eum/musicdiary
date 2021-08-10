@@ -20,7 +20,28 @@
   <form method="POST" action="{% url 'new' %}" class="post-form">
     {% csrf_token %}
     <section class="form-top flex justify-between w-80 h3 items-center">
-      <input type="text" name="title" class="form-title h2 pa2 w-30" placeholder="제목"/>
+      <input type="text" name="title" class="form-title h2 pa2 w-30" placeholder="제목" value="{{form2.title.value}}"/>
+
+      {% if track_title %}
+      <div class="music_choice w-30 mb2 flex justify-center items-center">
+        <img src="{{track_album_cover}}" alt="" class="cover br-100 w-30 h-100 mw4">
+        <div class="info ml2">
+          <h4>선곡한 음악</h4>
+          <h4 class="title">{{track_title}}</h4>
+          <h5 class="artist">{{track_artist}}</h5>
+          <div class="custom-player br2">
+            <div class="controls flex mt2 justify-center pa1 items-center">
+              <i class="fas fa-play action-btn pointer f6 mr2"></i>
+              <p>
+                <span class="now-playing">0:00</span> /
+                <span class="duration">0:30</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <audio class="media-player preview flex" src="{{track_audio}}">
+      </div>
+      {% else %}
       <div class="music_choice w-30 dn mb2 justify-center items-center">
         <img src="" alt="" class="cover br-100 w-30 h-100 mw4">
         <div class="info ml2">
@@ -39,6 +60,8 @@
         </div>
         <audio class="media-player preview dn" src="">
       </div>
+      {% endif %}
+
       <section class="music-container w-30">
         <input
           type="text"
@@ -51,11 +74,18 @@
         <div class="result_box w-100"></div>
       </section>
     </section>
-    <textarea name="body" class="form-body w-80 mv4 pa2 lh-title" placeholder="오늘의 이야기를 들려주세요"></textarea>
-    <input type="hidden" name="track_album_cover" value="">
-    <input type="hidden" name="track_title" value="">
-    <input type="hidden" name="track_artist" value="">
-    <input type="hidden" name="track_audio" value="">
+    <textarea name="body" class="form-body w-80 mv4 pa2 lh-title" placeholder="오늘의 이야기를 들려주세요">{{form2.body.value}}</textarea>
+    {% if track_title %}
+      <input type="hidden" name="track_album_cover" value="{{track_album_cover}}">
+      <input type="hidden" name="track_title" value="{{track_title}}">
+      <input type="hidden" name="track_artist" value="{{track_artist}}">
+      <input type="hidden" name="track_audio" value="{{track_audio}}">
+    {% else %}
+      <input type="hidden" name="track_album_cover" value="">
+      <input type="hidden" name="track_title" value="">
+      <input type="hidden" name="track_artist" value="">
+      <input type="hidden" name="track_audio" value="">
+    {% endif %}
 
 <div class="btn-area">
   <button class="save-btn mv3 dib b ph4 pv2 

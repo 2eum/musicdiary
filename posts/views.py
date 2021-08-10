@@ -11,6 +11,7 @@ from django.conf import settings
 from accounts.models import CustomUser
 import json
 from django.http import JsonResponse
+from django.contrib import messages
 
 # Create your views here.
 
@@ -29,17 +30,22 @@ def new(request):
         if request.method == 'POST':
             form = ContentForm(request.POST, request.FILES)
             if form.is_valid():
-                post = form.save(commit=False)
-                post.track_title = track_title
-                post.track_artist = track_artist
-                post.track_album_cover = track_album_cover
-                post.track_audio = track_audio
-                post.writer = request.user.nickname
-                post.writerid = request.user.username
-                post.author = request.user
-                post.published_date = timezone.now()
-                post.save()
-                return redirect('home')
+                if track_title == "":
+                    #음악을 선택하세요
+                    messages.warning(request, "음악을 선곡해주세요.")
+                    return redirect('new')
+                else:
+                    post = form.save(commit=False)
+                    post.track_title = track_title
+                    post.track_artist = track_artist
+                    post.track_album_cover = track_album_cover
+                    post.track_audio = track_audio
+                    post.writer = request.user.nickname
+                    post.writerid = request.user.username
+                    post.author = request.user
+                    post.published_date = timezone.now()
+                    post.save()
+                    return redirect('home')
             
         else:
             form = ContentForm()
@@ -87,15 +93,20 @@ def edit(request, index):
             if request.method == "POST":
                 form = ContentForm(request.POST, instance=post)
                 if form.is_valid():
-                    post = form.save(commit=False)
-                    post.track_title = track_title
-                    post.track_artist = track_artist
-                    post.track_album_cover = track_album_cover
-                    post.track_audio = track_audio
-                    post.author = request.user
-                    post.published_date = timezone.now
-                    post.save()
-                    return redirect('detail', index=post.pk)
+                    if track_title == "":
+                        #음악을 선택하세요
+                        messages.warning(request, "음악을 선곡해주세요.")
+                        return redirect('edit')
+                    else:
+                        post = form.save(commit=False)
+                        post.track_title = track_title
+                        post.track_artist = track_artist
+                        post.track_album_cover = track_album_cover
+                        post.track_audio = track_audio
+                        post.author = request.user
+                        post.published_date = timezone.now
+                        post.save()
+                        return redirect('detail', index=post.pk)
             else:
                 form = ContentForm(instance=post)
         else:

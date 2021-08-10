@@ -18,22 +18,29 @@
         </h2>
         <p class=" home-title tc f1 mv3 fw4">누군가의 오늘 하루, 그리고 음악.</p>
         <section class="switchables ph5">
-          {% for post in posts_list %} {% if forloop.first %}
-          <div
-            class="
-              preview
-              mt2
-              ph4
-              pv4
-              entry
-              justify-between
-              items-center
-              br2
-              current
-            "
-          >
-            {% else %}
-            <div class="preview ph4 pv4 entry justify-between br2">
+          {% if posts_list|length < 1 %}
+            <div>
+              <p class="tc f3 mv3">아직 아무도 오늘의 일기를 쓰지 않았아요 :(</p>
+              <p class="tc f3 mv3">오늘의 첫 글을 작성해주실래요?</p>
+            </div>
+          {% else %}
+            {% for post in posts_list %} 
+              {% if forloop.first %}
+                <div
+                  class="
+                    preview
+                    mt2
+                    ph4
+                    pv4
+                    entry
+                    justify-between
+                    items-center
+                    br2
+                    current
+                  "
+                >
+              {% else %}
+                <div class="preview ph4 pv4 entry justify-between br2">
               {% endif %}
               <button class="prev bn pointer f3">
                 <i class="fas fa-chevron-left"></i>
@@ -54,41 +61,45 @@
                   mp3-preview
                 </audio>
                 <div class="custom-player ph2 pv1 br3 tc">
+                  {% if post.track_audio %}
                   <div class="stream-base h1 br-pill">
                     <div class="stream-now h1 br-pill"></div>
                   </div>
-                  <div class="controls flex mt2 justify-center">
+                  <div class="controls flex mt2 justify-left">
                     <i class="fas fa-play action-btn pointer f4 mr2"></i>
                     <p>
                       <span class="now-playing">0:00</span> /
                       <span class="duration">0:30</span>
                     </p>
                   </div>
+                  {% else %}
+                  <p>재생가능한 미리듣기 음원이 없습니다</p>
+                  {% endif %}
                 </div>
+              </div>
+              <div
+                class="
+                  preview-text
+                  w-60
+                  ph3
+                  pv3
+                  flex flex-column
+                  justify-around
+                  h-100
+                "
+              >
+                <h3 class="diary-title f3 mt4 mb3 h-25 fw3">
+                  <a href="{% url 'detail' index=post.pk %}">{{post.title|truncatechars_html:30}}</a>
+                  <span class="ml2 f5 o-80">by {{post.writer}}</span>
+                </h3>
+                <p class="diary-text-preview lh-large h-75">{{post.body|truncatechars_html:150}}</p>
+              </div>
+              <button class="next bn pointer f3">
+                <i class="fas fa-chevron-right"></i>
+              </button>
             </div>
-            <div
-              class="
-                preview-text
-                w-60
-                ph3
-                pv3
-                flex flex-column
-                justify-around
-                h-100
-              "
-            >
-              <h3 class="diary-title f3 mt4 mb3 h-25 fw3">
-                <a href="{% url 'detail' index=post.pk %}">{{post.title|truncatechars_html:30}}</a>
-                <span class="ml2 f5 o-80">by {{post.writer}}</span>
-              </h3>
-              <p class="diary-text-preview lh-large h-75">{{post.body|truncatechars_html:150}}</p>
-            </div>
-            <button class="next bn pointer f3">
-              <i class="fas fa-chevron-right"></i>
-            </button>
-          </div>
-
-          {% endfor %}
+            {% endfor %}
+          {% endif %}
         </section>
       </article>
     </section>

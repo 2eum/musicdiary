@@ -47,7 +47,7 @@ const sendSearchRequest = (e) => {
         showResult(results);
         let result_entries = document.querySelectorAll(".result_entry");
         for (const entry of result_entries) {
-          entry.addEventListener("click", (e) => addToForm(e), {once: true});
+          entry.addEventListener("click", (e) => addToForm(e), { once: true });
         }
       });
   } else {
@@ -66,7 +66,7 @@ const showResult = (results) => {
     result_entry.classList.add("result_entry");
 
     const cover_container = document.createElement("div");
-    cover_container.classList.add('cover-img-container')
+    cover_container.classList.add("cover-img-container");
     const cover = document.createElement("img");
     cover.src = img_url;
     cover.alt = title_src;
@@ -88,9 +88,9 @@ const showResult = (results) => {
     artists.classList.add("artists");
     info.appendChild(artists);
 
-    const preview_src = document.createElement('p');
-    preview_src.classList.add('dn');
-    preview_src.classList.add('preview-src');
+    const preview_src = document.createElement("p");
+    preview_src.classList.add("dn");
+    preview_src.classList.add("preview-src");
     preview_src.textContent = preview_url;
     result_entry.appendChild(preview_src);
 
@@ -101,13 +101,13 @@ const showResult = (results) => {
 
 const addToForm = (e) => {
   e.preventDefault();
-  musicChoice.classList.remove('dn');
-  musicChoice.classList.add('flex');
+  musicChoice.classList.remove("dn");
+  musicChoice.classList.add("flex");
   const music = e.target;
   const cover_url = music.querySelector("img").src;
   const title = music.querySelector(".title").textContent;
   const artist = music.querySelector(".artists").textContent.trim();
-  const preview_url = music.querySelector(".preview-src").textContent
+  const preview_url = music.querySelector(".preview-src").textContent;
   const selection_cover = musicChoice.querySelector(".cover");
   selection_cover.src = cover_url;
   selection_cover.alt = title;
@@ -119,7 +119,13 @@ const addToForm = (e) => {
   selection_artist.textContent = artist;
 
   const selection_preview = musicChoice.querySelector(".preview");
-  selection_preview.src = preview_url;
+  if (preview_url) {
+    selection_preview.src = preview_url;
+  } else {
+    const messageContainer = document.querySelector(".controls");
+    const message = "<p class='f6'>재생가능한 미리듣기 음원이 없습니다</p>";
+    messageContainer.innerHTML = message;
+  }
 
   // hidden input으로 만들기
   const cover_input = document.querySelector("input[name=track_album_cover]");

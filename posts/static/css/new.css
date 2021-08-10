@@ -24,7 +24,7 @@
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
   background-color: var(--mus-white);
-  box-shadow: 0px 8px 6px rgba(0,0,0, 0.1);
+  box-shadow: 0px 8px 6px rgba(0, 0, 0, 0.1);
 }
 
 .result_box::-webkit-scrollbar {
@@ -36,7 +36,7 @@
   z-index: 0;
   display: flex;
   padding: 0.5rem;
-  border-bottom: 1px solid #D1CFCB;
+  border-bottom: 1px solid #d1cfcb;
 }
 
 .result_entry::after {
@@ -54,7 +54,7 @@
 }
 
 .cover-img-container {
-  width: 30%
+  width: 30%;
 }
 
 .result_entry img {
@@ -63,8 +63,8 @@
   object-fit: scale-down;
 }
 
-
-.result_entry .info .title, .artists {
+.result_entry .info .title,
+.artists {
   text-align: left;
   margin: 0.5rem;
   font-size: 0.8rem;
@@ -75,7 +75,8 @@
   background-color: var(--mus-brown);
 }
 
-.music_choice h4, h5 {
+.music_choice h4,
+h5 {
   margin-bottom: 5px;
 }
 
@@ -87,10 +88,6 @@
   width: 80vw;
   height: 60vh;
   margin: 0 10%;
-}
-
-.form-title {
-  border-color: var(--mus-neutralgray);
 }
 
 .form-body {

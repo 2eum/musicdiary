@@ -23,7 +23,7 @@
     <!-- top-nav section -->
     <nav class="ph4 flex lh-solid w-100 justify-between pv1 items-center">
       <a class="logo" href="{% url 'home' %}"
-        ><img src="{% static 'images/logo.jpg' %}" alt="logo" class="br-100"
+        ><img src="{% static 'images/1eum_logo.png' %}" alt="logo" class=""
       /></a>
       <div class="menus flex justify-between items-center w-100 ml4">
         <ul class="flex items-center h3">
@@ -77,21 +77,23 @@
           </li>
         </ul>
         {% if user.is_authenticated %}
-        <p>{{ user.nickname }}님, 어서오세요</p>
+        <p class="hello ml7 mr3">{{ user.nickname }}님, 어서오세요 :)</p>
+        {% else %}
+        <p class="hello ml7 mr3">로그인 하고 더 많은 이야기를 나눠요! :)</p>
         {% endif %}
         <ul class="flex items-center">
           {% if user.is_authenticated %}
-          <li class="mh3 f7">
+          <li class="mh3 f6">
             <a href="{% url 'mypage' %}" class="dark-grey">내 페이지</a>
           </li>
-          <li class="mh3 f7">
+          <li class="mh3 f6">
             <a href="{% url 'logout' %}" class="dark-grey">로그아웃</a>
           </li>
           {% else %}
-          <li class="mh3 f7">
+          <li class="mh3 f6">
             <a href="{% url 'login' %}" class="dark-grey">로그인</a>
           </li>
-          <li class="mh3 f7">
+          <li class="mh3 f6">
             <a href="{% url 'signup' %}" class="dark-grey">회원가입</a>
           </li>
           {% endif %}
@@ -100,5 +102,11 @@
     </nav>
 
     {% block content %} {% endblock %}
+
+    <footer class="mt6 pv4 ph3 ph5-m ph6-l mid-gray bt b--light-gray">
+      <small class="f6 db tc mv3">© 2021 <b>2EUM of SG-LIKELION.</b>., All Rights Reserved</small>
+        <a class="f5 mb3" href="https://github.com/2eum/musicdiary" title="Github-link" class="f6 dib ph2 link mid-gray dim">Click and visit our Github!</a>
+    </footer>
+    
   </body>
 </html>

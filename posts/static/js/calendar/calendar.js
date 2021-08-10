@@ -42,27 +42,19 @@ const renderCalendar = () => {
             'this' : 'other';
         const dateClassSelector = `.on${viewYear}-${viewMonth+1}-${date}`
         const entryImg = document.querySelectorAll(dateClassSelector);
-        let imgList = ""
-        entryImg.forEach(x =>{
-            if(x){
-                imgList += `
-            <a href="detail/${x.querySelector(".id").textContent}">
-            <img 
-            src=${x.querySelector(".img-src").textContent} 
-            alt="cover" class="ma1" />
-            </a>`
-            }
-        })
-        dates[i] = 
-            `<div class="cal-date ${condition}">
-                ${date}
-                <div class="flex covers">
-                    ${imgList}
-                </div>
-            </div>
-            `;
-    });
+        const recent = [...entryImg].pop()
 
+        const dateElement = document.createElement("div");
+        dateElement.classList.add("cal-date")
+        dateElement.classList.add(condition)
+        dateElement.textContent = date
+        if(recent){
+            dateElement.style.background = `url(${recent.querySelector(".img-src").textContent}) no-repeat center/80%`
+        }
+        dates[i] = dateElement.outerHTML
+        
+    });
+    
     document.querySelector('.cal-dates').innerHTML = dates.join('');
     //div가 담긴 dates 배열을 통째로 cal-dates div에 옮겨심기
 

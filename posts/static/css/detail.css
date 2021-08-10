@@ -8,6 +8,16 @@
     --mus-brown: #998f76;
 }
 
+.detail-header {
+    margin-top: 5%;
+}
+
+.go-list {
+    font-size: 1.3em;
+    margin : 15%;
+    color: var(--mus-darkgray);
+}
+
 .music {
     height: 250px;
 }
@@ -43,7 +53,7 @@ hr {
 }
 
 .diary .diary-title {
-    font-size: 2.2em;
+    font-size: 2em;
     margin-bottom: 0px;
     margin-top: 90px;
 }
@@ -60,4 +70,23 @@ hr {
 
 .diary-content {
     font-size: 1.2em;
+}
+
+.music-info .custom-player {
+    /* color: var(--mus-white); */
+    width: 130%;
+}
+
+.music-info .custom-player * {
+    color: var(--mus-darkgray);
+}
+
+.music-info .stream-base {
+    background-color: var(--mus-lightgray);
+    width: 100%;
+}
+
+.music-info .stream-now {
+    background-color: var(--mus-pink);
+    width: calc(20 / 3 * 1%);
 }

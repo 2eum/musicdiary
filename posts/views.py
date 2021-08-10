@@ -100,20 +100,17 @@ def edit(request, index):
             if request.method == "POST":
                 form = ContentForm(request.POST, instance=post)
                 if form.is_valid():
-                    if track_title == "":
-                        #음악을 선택하세요
-                        messages.warning(request, "음악을 선곡해주세요.")
-                        return redirect('edit')
-                    else:
-                        post = form.save(commit=False)
-                        post.track_title = track_title
-                        post.track_artist = track_artist
-                        post.track_album_cover = track_album_cover
-                        post.track_audio = track_audio
-                        post.author = request.user
-                        post.published_date = timezone.now
-                        post.save()
-                        return redirect('detail', index=post.pk)
+                    post = form.save(commit=False)
+                    post.track_title = track_title
+                    post.track_artist = track_artist
+                    post.track_album_cover = track_album_cover
+                    post.track_audio = track_audio
+                    post.author = request.user
+                    post.published_date = timezone.now
+                    post.save()
+                    return redirect('detail', index=post.pk)
+                else:
+                    messages.warning(request, "제목과 본문을 모두 써주세요.")
             else:
                 form = ContentForm(instance=post)
         else:

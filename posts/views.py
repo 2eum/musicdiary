@@ -12,6 +12,7 @@ from accounts.models import CustomUser
 import json
 from django.http import JsonResponse
 from django.contrib import messages
+from django.shortcuts import render
 
 # Create your views here.
 

@@ -12,7 +12,7 @@
     {% csrf_token %}
     <section class="form-top flex justify-between w-80 h3 items-center">
       <input type="text" name="title" class="form-title h2 pa2 w-30" placeholder="제목" value="{{post.title}}"/>
-      <div class="music_choice w-30 flex mb2 justify-center">
+      <div class="music_choice w-30 flex mb2 justify-center items-center">
         <img src="{{post.track_album_cover}}" alt="{{post.track_title}}" class="cover br-100 w-30 h-100 mw4">
         <div class="info ml2">
           <h4>선곡한 음악</h4>

@@ -7,9 +7,11 @@ const stopAll = () => {
   const current = document.querySelector(".current");
   const audio = current.querySelector("audio");
   const actionBtn = current.querySelector(".action-btn");
-  audio.pause();
-  actionBtn.classList.remove(".fa-pause");
-  actionBtn.classList.add("fa-play");
+  if (actionBtn) {
+    audio.pause();
+    actionBtn.classList.remove(".fa-pause");
+    actionBtn.classList.add("fa-play");
+  }
 };
 
 const nextArticle = () => {

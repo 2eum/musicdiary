@@ -122,12 +122,17 @@
           id="nickname"
           placeholder="닉네임"
         />
-        {% if form.nickname.errors %} {{form.nickname.errors}} {% endif %}
-        {% for message in messages %}
-          {{ message.tag }}
-          {{ message }}
-        {% endfor %}
+        {% if form.nickname.errors %} {{form.nickname.errors}} {% endif %} 
+        
+        {% if messages %}
+        <ul class="errorlist">
+          {% for message in messages %}
+          <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
       </div>
+
       {% if form.non_field_errors %} {{form.non_field_errors}} {% endif %}
     </fieldset>
 

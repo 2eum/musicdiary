@@ -1,28 +1,66 @@
 {% extends './base.html' %} {% load static %} {% block add_css %}
 <link rel="stylesheet" href="{% static 'css/new.css' %}" />
 {% endblock add_css %} {% block content %}
-<h1>나의 이야기</h1>
+<section class="new-header">
+  <h2>수정하기</h2>
+  <hr color="#DEDBD8">
+</section>
 
-<input
-  type="text"
-  name="search_query"
-  id="search_query"
-  placeholder="음악 검색"
-/>
-<div class="result_box"></div>
+<section class="new-content-area">
 
-<h3>선곡된 음악정보</h3>
-<div class="music_choice">
-  <img src="{{post.track_album_cover}}" alt="album-cover" />
-  <p>{{post.track_title}}</p>
-  <p>{{post.track_artist}}</p>
-  <audio src="{{post.track_audio}}" controls></audio>
-</div>
+  <form method="POST" action="{% url 'edit' index=post.pk %}" class="post-form">
+    {% csrf_token %}
+    <section class="form-top flex justify-between w-80 h3 items-center">
+      <input type="text" name="title" class="form-title h2 pa2 w-30" placeholder="제목" value="{{post.title}}"/>
+      <div class="music_choice w-30 flex mb2 justify-center items-center">
+        <img src="{{post.track_album_cover}}" alt="{{post.track_title}}" class="cover br-100 w-30 h-100 mw4">
+        <div class="info ml2">
+          <h4>선곡한 음악</h4>
+          <h4 class="title">{{post.track_title}}</h4>
+          <h5 class="artist">{{post.track_artist}}</h5>
+          <div class="custom-player br2">
+          
+          <div class="controls flex mt2 justify-center pa1 items-center">
+          {% if post.track_audio %}
+            <i class="fas fa-play action-btn pointer f6 mr2"></i>
+            <p>
+              <span class="now-playing">0:00</span> /
+              <span class="duration">0:30</span>
+            </p>
+          {% else %}
+            <p class="f6">재생가능한 미리듣기 음원이 없습니다</p>
+          {% endif %}
+          </div>
+            
+          </div>
+        </div>
+        <audio class="media-player preview dn" src="{{post.track_audio}}">
+      </div>
+      <section class="music-container w-30">
+        <input
+          type="text"
+          name="search_query"
+          id="search_query"
+          placeholder="음악 검색.."
+          autocomplete="off"
+          class="w-100 h2 pa2"
+        />
+        <div class="result_box w-100"></div>
+      </section>
+    </section>
+    <textarea name="body" class="form-body w-80 mv4 pa2" placeholder="오늘의 이야기를 들려주세요">{{post.body}}</textarea>
+    <input type="hidden" name="track_album_cover" value="{{post.track_album_cover}}">
+    <input type="hidden" name="track_title" value="{{post.track_title}}">
+    <input type="hidden" name="track_artist" value="{{post.track_artist}}">
+    <input type="hidden" name="track_audio" value="{{post.track_audio}}">
+    <div class="btn-area">
+      <button class="save-btn mv3 dib b ph4 pv2 
+    input-reset bn br2 grow pointer f4 hover-white" type="submit">저장하기</button>
+    </div>
+  </form>
 
-<form method="POST" class="post-form">
-  {% csrf_token %} {{ form.as_p }}
-
-  <button type="submit">작성 완료 !</button>
-</form>
 <script src="{% static 'js/spotify.js' %}"></script>
+<script src="{% static 'js/player.js' %}"></script>
+
+
 {% endblock content %}

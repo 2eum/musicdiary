@@ -11,11 +11,11 @@ def signup_view(request):
     else:
         if request.method =="POST":
             form =SignupForm(request.POST)
-            if CustomUser.objects.filter(nickname=request.POST['nickname']).exists():
-                messages.warning(request, "이미 사용 중인 닉네임입니다.")
-                return redirect('signup')
-            else:
-                if form.is_valid():
+            if form.is_valid():
+                if CustomUser.objects.filter(nickname=request.POST['nickname']).exists():
+                    messages.warning(request, "이미 사용 중인 닉네임입니다.")
+                    return redirect('signup')
+                else:
                     user = form.save()
                     login(request,user)
                     return redirect('home')

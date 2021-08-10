@@ -1,56 +1,73 @@
-
 {% extends './base.html' %} {% load static %} {% block add_css %}
 <link rel="stylesheet" href="{% static 'css/detail.css' %}" />
 {% endblock add_css %} {% block content %}
 
-<!-- Music Area -->
-<section class="music-area w-80 ml-auto mr-auto mv3 flex justify-center">
-    <div class="music flex ph3 pv3 mt5 justify-center">
-        <img
-            src="{{ post.track_album_cover }}"
-            alt="album image"
-            class="br-100 mv3 mh3 shadow-5-ns"
-        />
-        <div class="music-info mh3 mv3 pv4">
-            <p class="music-title f3">{{post.track_title}}</p>
-            <p class="music-artist">{{post.track_artist}}</p>
-            <audio class="player" src="{{ post.track_audio }}" controls>mp3-preview</audio>
-            <!-- <div class="player pv2">플레이어 들어갈 자리</div> -->
-        </div>
-    </div>
+<section class="detail-header">
+  <a href="{% url 'mypage' %}" class="go-list dark-grey"
+    ><i class="fas fa-chevron-left mh1"></i> 내 글 목록으로</a
+  >
 </section>
 
-<hr color="#DEDBD8">
+<!-- Music Area -->
+<section class="music-area w-70 ml-auto mr-auto mb3 flex justify-center">
+  <div class="music flex ph3 pv3 mt5 justify-center">
+    <img
+      src="{{ post.track_album_cover }}"
+      alt="album image"
+      class="br-100 mv3 mh3 shadow-5-ns"
+    />
+    <div class="music-info mh3 mv3 pv4">
+      <p class="music-title f3">{{post.track_title}}</p>
+      <p class="music-artist">{{post.track_artist}}</p>
+      <audio class="media-player dn" src="{{ post.track_audio }}" controls>
+        mp3-preview
+      </audio>
+      <div class="custom-player ph2 pv1 br3 tc">
+        {% if post.track_audio %}
+        <div class="stream-base h1 br-pill">
+          <div class="stream-now h1 br-pill"></div>
+        </div>
+        <div class="controls flex mt2 justify-left">
+          <i class="fas fa-play action-btn pointer f4 mr2"></i>
+          <p>
+            <span class="now-playing">0:00</span> /
+            <span class="duration">0:30</span>
+          </p>
+        </div>
+        {% else %}
+        <p>재생가능한 미리듣기 음원이 없습니다</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr color="#DEDBD8" />
 
 <!-- Diary Area -->
 <section class="diary-area">
-    <div class="diary w-80 ml-auto mr-auto">
-        <h1 class="diary-title">
-            {{post.title}}
-        </h1>
-        <div class="diary-info mv3">
-            <h4 class="diary-author mb3 mt4">
-                작성자 :  <span class="username">{{post.writer}}</span>
-            </h4>
-            {% if post.pub_date %}
-                <h5 class="diary-date">
-                    {{ post.pub_date }}
-                </h5>
-            {% endif %}
-        </div>
-        <p class="diary-content mv5 lh-large">
-            {{post.body}}
-        </p>
-        <ul class="tags flex justify-end w-100 mv3">
-            <li class="tag">#태그</li>
-            <li class="tag ml2">#태그</li>
-            <li class="tag mh2">#태그</li>
-        </ul>
-        {% if user.username == post.writerid %}
-            <a class="mr3 mt2" href="{% url 'edit' index=post.pk %}">수정하기</a>
-            <a class="mt2" href="{% url 'delete' pk=post.pk %}">삭제하기</a>
-        {% endif %}
+  <div class="diary w-70 ml-auto mr-auto">
+    <h1 class="diary-title">{{post.title}}</h1>
+    <div class="diary-info mv3">
+      <h4 class="diary-author mb3 mt4">
+        작성자 : <span class="username">{{post.writer}}</span>
+      </h4>
+      {% if post.pub_date %}
+      <h5 class="diary-date">{{ post.pub_date }}</h5>
+      {% endif %}
     </div>
+    <div class="diary-content mv5 lh-large">{{post.body|linebreaks}}</div>
+    <div class="btn-area">
+      {% if user.nickname == post.writer%}
+      <div class="btn-left">
+        <a class="mr3 mt2" href="{% url 'edit' index=post.pk %}">수정하기</a>
+        <a class="mr3 mt2" href="{% url 'delete' pk=post.pk %}">삭제하기</a>
+      </div>
+      {% endif %}
+    </div>
+  </div>
 </section>
+
+<script src="{% static 'js/player.js' %}"></script>
 
 {% endblock %}

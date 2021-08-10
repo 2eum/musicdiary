@@ -21,7 +21,7 @@
             w-100
             b--moon-gray
             fw3
-            mt2
+            mv2
             br2
             f6
           "
@@ -32,7 +32,7 @@
         />
         {% if form.username.errors %} {{form.username.errors}} {% endif %}
       </div>
-      <div class="mb3 mt2">
+      <div class="mb3 mt3">
         <label for="password1">비밀번호</label>
         <input
           class="
@@ -44,7 +44,7 @@
             w-100
             b--moon-gray
             fw3
-            mt2
+            mv2
             br2
             f6
           "
@@ -55,7 +55,7 @@
         />
         {% if form.password1.errors %} {{form.password1.errors}} {% endif %}
       </div>
-      <div class="mb3 mt2">
+      <div class="mb3 mt3">
         <label for="password2">비밀번호 확인</label>
         <input
           class="
@@ -67,7 +67,7 @@
             w-100
             b--moon-gray
             fw3
-            mt2
+            mv2
             br2
             f6
           "
@@ -79,7 +79,7 @@
         {% if form.password2.errors %} {{form.password2.errors}} {% endif %}
       </div>
 
-      <div class="mb3 mt2">
+      <div class="mb3 mt3">
         <label for="user_email">이메일 주소</label>
         <input
           class="
@@ -90,7 +90,7 @@
             w-100
             b--moon-gray
             fw3
-            mt2
+            mv2
             br2
             f6
           "
@@ -113,7 +113,7 @@
             w-100
             b--moon-gray
             fw3
-            mt2
+            mv2
             br2
             f6
           "
@@ -122,24 +122,29 @@
           id="nickname"
           placeholder="닉네임"
         />
-        {% if form.nickname.errors %} {{form.nickname.errors}} {% endif %}
-        {% for message in messages %}
-          {{ message.tag }}
-          {{ message }}
-        {% endfor %}
+        {% if form.nickname.errors %} {{form.nickname.errors}} {% endif %} 
+        
+        {% if messages %}
+        <ul class="errorlist">
+          {% for message in messages %}
+          <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
       </div>
+
       {% if form.non_field_errors %} {{form.non_field_errors}} {% endif %}
     </fieldset>
 
     <div class="tc">
       <input
-        class="b ph3 pv2 input-reset bn br2 grow pointer f6 dib btn-beige w-100"
+        class="b ph3 pv2 input-reset bn br2 grow pointer f5 dib btn-beige w-100"
         type="submit"
         value="가입하기"
       />
     </div>
-    <div class="lh-copy mt3 tc">
-      <a href="#0" class="f6 link dim black db mb2">로그인</a>
+    <div class="lh-copy mt4 tc">
+      <a href="{% url 'login' %}" class="f6 link dim black db mb2">로그인</a>
     </div>
   </form>
 </main>

@@ -1,12 +1,12 @@
 {% extends './base.html' %} {% load static %} {% block content %}
 
 <section class="header-content flex flex-column items-center justify-around">
-  <span class="shady f3">{% now "Y" %}년 {% now "M" %} {% now "j" %}일</span>
+  <span class="shady f3 mv3">{% now "Y" %}년 {% now "M" %} {% now "j" %}일</span>
   <h1 class="greeting">
     <span class="username">{{ user.nickname }}</span>님, 오늘은 어떤 하루였나요?
   </h1>
   <a class="mv5 dib b ph4 pv2 input-reset bn br2 grow pointer f4 create-btn hover-white" 
-  href="{% url 'new' %}">내 이야기 작성하기</a>
+  href="{% url 'new' %}">오늘의 일기 쓰기</a>
 </section>
 
 <!-- main content-area -->
@@ -24,27 +24,22 @@
     {% for post in posts_list %}
       <article class="content">
         <p class="date">{{post.pub_date}}</p>
-        <div class="preview flex ph3 pv3 justify-around">
-          <div class="preview-music w-30 ph3 pv3">
+        <div class="preview flex ph3 pv3 mb4 justify-between">
+          <div class="preview-music w-25 ph3 pv3">
             <img
               src="{{ post.track_album_cover }}"
               alt="album cover"
-              class="w-100 br-100"
+              class="br-100 mv2"
             />
             <p class="music-title f3">{{post.track_title}}</p>
             <p class="music-artist">{{post.track_artist}}</p>
           </div>
           <div class="preview-text w-60 ph3 pv3 flex flex-column justify-center">
             <h3 class="diary-title f3 mb3">
-              <a href="{% url 'detail' index=post.pk %}">{{post.title}}</a>
+              <a class="mv5" href="{% url 'detail' index=post.pk %}">{{post.title|truncatechars_html:30}}</a>
             </h3>
-            <!-- <ul class="tags flex justify-end w-100 mb3">
-              <li class="tag">#태그</li>
-              <li class="tag ml2">#태그</li>
-              <li class="tag mh2">#태그</li>
-            </ul> -->
-            <p class="diary-text-preview lh-large">
-              {{post.body|linebreaks}}
+            <p class="diary-text-preview lh-large mv2">
+              {{post.body|truncatechars_html:300}}
             </p>
           </div>
         </div>

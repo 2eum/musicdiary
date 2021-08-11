@@ -22,19 +22,19 @@ def home(request):
 
 def new(request):
     if request.user.is_authenticated:
+
         track_title = request.POST.get('track_title')
         track_artist = request.POST.get('track_artist')
         track_album_cover = request.POST.get('track_album_cover')
         track_audio = request.POST.get('track_audio')
 
-        if request.method == 'POST':
+        if request.method == 'POST': #저장
             form = ContentForm(request.POST, request.FILES)
             if form.is_valid():
-                if track_title == "":
-                    #음악을 선택하세요
+                if track_title == "": # 제목O, 본문O, 음악X
                     messages.warning(request, "음악을 선곡해주세요.")
-                    return redirect('new')
-                else:
+                    return render(request, 'new.html', {'form2': form})
+                else: # 제목O, 본문O, 음악O
                     post = form.save(commit=False)
                     post.track_title = track_title
                     post.track_artist = track_artist
@@ -46,8 +46,15 @@ def new(request):
                     post.published_date = timezone.now()
                     post.save()
                     return redirect('home')
-            
-        else:
+            else:
+                if track_title == "": # 제목 or 본문 중 하나 이상 없고 음악도 없음
+                    messages.warning(request, "제목과 본문을 모두 쓰고 음악도 선곡해주세요.")
+                    return render(request, 'new.html', {'form2': form})
+                else: # 제목 or 본문 중 하나 이상 없고 음악은 있음
+                    messages.warning(request, "제목과 본문을 모두 써주세요.")
+                    return render(request, 'new.html', {'form2': form, 'track_title':track_title, 'track_artist':track_artist, 'track_album_cover':track_album_cover, 'track_audio':track_audio})
+
+        else: #글쓰기
             form = ContentForm()
     else:
         return redirect('login')
@@ -93,20 +100,17 @@ def edit(request, index):
             if request.method == "POST":
                 form = ContentForm(request.POST, instance=post)
                 if form.is_valid():
-                    if track_title == "":
-                        #음악을 선택하세요
-                        messages.warning(request, "음악을 선곡해주세요.")
-                        return redirect('edit')
-                    else:
-                        post = form.save(commit=False)
-                        post.track_title = track_title
-                        post.track_artist = track_artist
-                        post.track_album_cover = track_album_cover
-                        post.track_audio = track_audio
-                        post.author = request.user
-                        post.published_date = timezone.now
-                        post.save()
-                        return redirect('detail', index=post.pk)
+                    post = form.save(commit=False)
+                    post.track_title = track_title
+                    post.track_artist = track_artist
+                    post.track_album_cover = track_album_cover
+                    post.track_audio = track_audio
+                    post.author = request.user
+                    post.published_date = timezone.now
+                    post.save()
+                    return redirect('detail', index=post.pk)
+                else:
+                    messages.warning(request, "제목과 본문을 모두 써주세요.")
             else:
                 form = ContentForm(instance=post)
         else:

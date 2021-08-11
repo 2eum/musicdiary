@@ -1,7 +1,7 @@
 {% extends './base.html' %} {% load static %} {% block add_css %}
 <link rel="stylesheet" href="{% static 'css/login-register.css' %}" />
 {% endblock add_css %} {% block content %}
-<main class="ph4 pv1 black-80 register-container">
+<main class="register-container ph4 pv1 mv4 black-80 w-80 center">
   <form
     method="post"
     action="{% url 'signup' %}"
@@ -123,7 +123,6 @@
           placeholder="닉네임"
         />
         {% if form.nickname.errors %} {{form.nickname.errors}} {% endif %} 
-        
         {% if messages %}
         <ul class="errorlist">
           {% for message in messages %}

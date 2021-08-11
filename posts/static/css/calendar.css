@@ -11,21 +11,17 @@
 }
 
 .cal-nav {
-  /* width: 14%; */
   display: flex;
   flex-grow: 0;
   flex-shrink: 0;
   justify-content: center;
-  /* align-items: center; */
   border: 1px solid var(--mus-little-darkgray);
   border-radius: 5px;
-  /* margin: 2% 43% 7% 43%; */
 }
 
 .year-month {
   text-align: center;
   font-size: 2em;
-  /* margin: 20px; */
 }
 
 .nav-btn {
@@ -39,7 +35,6 @@
 }
 
 .go-today {
-  /* width: 80%; */
   width: 75px;
   border-left: 1px solid var(--mus-neutralgray);
   border-right: 1px solid var(--mus-neutralgray);
@@ -71,7 +66,6 @@
   cursor: pointer;
   width: calc(100% / 7);
   padding: 1% 9% 9% 1%;
-  /* text-align: center; */
   border: 1px solid #333333;
   transition: all 0.3s;
 }

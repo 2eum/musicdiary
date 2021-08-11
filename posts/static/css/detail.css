@@ -18,23 +18,9 @@
   color: var(--mus-darkgray);
 }
 
-.music {
-  height: 250px;
-}
-
-.music img {
-  height: 90%;
-}
-
 .music-info {
   font-family: Pretendard-Medium;
   color: var(--mus-darkgray);
-  text-align: left;
-  display: inline-block;
-}
-
-.music-info .music-title {
-  margin: 12px;
 }
 
 .player {
@@ -43,33 +29,8 @@
 }
 
 hr {
+  border: 2px solid #dedbd8;
   width: 16%;
-  text-align: center;
-  margin: 20px 42% 20px 42%;
-}
-
-.diary-info {
-  text-align: right;
-}
-
-.diary .diary-title {
-  font-size: 2em;
-  margin-bottom: 0px;
-  margin-top: 90px;
-}
-
-.diary-author {
-  font-size: 1.3em;
-  color: var(--mus-darkgray);
-}
-
-.diary-date {
-  font-size: 1.1em;
-  color: var(--mus-darkgray);
-}
-
-.diary-content {
-  font-size: 1.2em;
 }
 
 .music-info {
@@ -89,7 +50,7 @@ hr {
   width: 100%;
 }
 
-.music-info .stream-now {
+.stream-now {
   background-color: var(--mus-pink);
   width: calc(20 / 3 * 1%);
 }

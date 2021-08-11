@@ -1,3 +1,4 @@
+/* base settings */
 @font-face {
   font-family: "Pretendard-Thin";
   src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Thin.woff")
@@ -74,10 +75,6 @@
   font-family: Pretendard-Regular, Arial, Helvetica, sans-serif;
 }
 
-.current {
-  font-family: Pretendard-SemiBold;
-}
-
 li {
   list-style-type: none;
 }
@@ -98,8 +95,12 @@ input:focus {
   outline: none;
 }
 
-.dark-grey {
+.dark-gray {
   color: var(--mus-darkgray);
+}
+
+.shady {
+  color: #665e49;
 }
 
 .btn-beige {
@@ -140,162 +141,22 @@ nav > .logo {
   color: var(--mus-white);
 }
 
-.hello {
+.brown {
   color: var(--mus-brown);
-  font-size: 1.2em;
-}
-
-footer {
-  text-align: center;
-}
-
-/* ListView */
-/* header */
-
-.header-content {
-  background: linear-gradient(
-    120deg,
-    rgba(235, 178, 155, 0.5),
-    rgba(255, 252, 248, 0.58)
-  );
-  text-align: center;
-  padding: 4rem 0;
-  height: 50vh;
-}
-
-.shady {
-  color: #665e49;
-}
-
-.username {
-  color: #665e49;
-  font-weight: 600;
-}
-
-.greeting {
-  color: #665e49;
-  font-family: Pretendard-Thin;
-  font-size: 2.7em;
 }
 
 .create-btn {
   background-color: #ebb29b;
+  font-weight: 600;
   color: var(--mus-white);
 }
 
-/* Main Content Area */
 .create-btn:visited {
   color: var(--mus-white);
 }
 
-.content-title {
-  font-family: Pretendard-Bold;
-  margin: 70px 0px 20px 0px;
-}
-
-.view {
-  margin: 10px;
-  font-size: 0.9rem;
-}
-
-.date {
-  margin: 30px 0px 20px 0px;
-}
-
-.preview {
-  background-color: var(--mus-white);
-}
-
-
-/* Home */
-.home-banner-container {
-  background: linear-gradient(
-    to bottom,
-    rgba(196, 185, 157),
-    rgba(196, 185, 157, 0.82)
-  );
-}
-
-.home-banner-container *,
-.home-banner-container p,
-.home-banner-container .diary-title {
-  color: var(--mus-white);
-}
-
-.home-banner-container .preview {
-  background: transparent;
-}
-
-.home-content-container .preview {
-  width: 60vw;
-  /* height: 35vh; */
-  height: 350px;
-}
-
-.home-title {
-  font-family : Pretendard-Thin;
-  background: rgba(255, 213, 196, 0.5);
-}
-
-.preview-music {
-  text-align: center;
-}
-
-.music-title {
-  font-family: Pretendard-Medium;
-  color: var(--mus-darkgray);
-  margin: 12px;
-}
-
-.music-artist {
-  font-family: Pretendard-Medium;
-  color: var(--mus-little-darkgray);
-  margin: 12px;
-}
-
-.preview-music img {
-  max-width: 60%;
-  filter: drop-shadow(3px 3px 3px #000);
-}
-
-.diary-title {
-  font-family: Pretendard-Medium;
-  color: var(--mus-darkgray);
-}
-
-.tag {
-  color: var(--mus-little-darkgray);
-}
-
-.diary-text-preview {
-  word-wrap: break-word;
-  overflow: hidden;
-}
-
 .lh-large {
   line-height: 1.8;
-}
-
-.entry {
-  display: none;
-}
-
-.entry.current {
-  display: flex;
-}
-
-.prev,
-.next {
-  background: none;
-}
-
-.pink-emp {
-  color: #dba691;
-}
-
-
-.create-post p {
-  font-family: Pretendard-ExtraLight;
 }
 
 /* custom player */

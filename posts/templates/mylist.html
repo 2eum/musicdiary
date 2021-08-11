@@ -1,0 +1,59 @@
+{% extends './base.html' %} {% load static %} {% block add_css %}
+<link rel="stylesheet" href="{% static 'css/list.css' %}" />
+{% endblock add_css %} {% block content %}
+
+<section
+  class="header-content pa4 flex flex-column items-center justify-around tc"
+>
+  <p class="shady f3 mv3">{% now "Y" %}년 {% now "M" %} {% now "j" %}일</p>
+  <h1 class="greeting shady f1">
+    <span class="username shady fw6">{{ user.nickname }}</span>님, 오늘은 어떤
+    하루였나요?
+  </h1>
+  <a
+    class="create-btn mv5 ph4 pv2 dib input-reset bn br2 grow pointer f4"
+    href="{% url 'new' %}"
+    >오늘의 일기 쓰기</a
+  >
+</section>
+
+<!-- main content-area -->
+<main>
+  <section class="content-area flex flex-column w-80 ml-auto mr-auto">
+    <h1 class="content-title mt5 mb4">나의 일기</h1>
+    <ul class="viewtab flex justify-end">
+      <li class="view br pr3 ma3">
+        <a class="current" href="">리스트 보기</a>
+      </li>
+      <li class="view mv3"><a href="{% url 'mypage-cal' %}">달력 보기</a></li>
+    </ul>
+
+    {% for post in posts_list %}
+    <article class="content">
+      <p class="date mt4 mb3 f4">{{post.pub_date|date:"Y년 n월 j일 (l)"}}</p>
+      <div class="preview ph5 pv4 mb4 flex justify-between">
+        <div class="preview-music w-25 ph3 pv3 tc">
+          <img
+            src="{{ post.track_album_cover }}"
+            alt="album cover"
+            class="br-100 mv2"
+          />
+          <p class="music-title f3 mv2">{{post.track_title}}</p>
+          <p class="music-artist mv2">{{post.track_artist}}</p>
+        </div>
+        <div class="preview-text w-60 ph3 pv3 flex flex-column justify-center">
+          <h3 class="diary-title f3 mb3">
+            <a class="mv5" href="{% url 'detail' index=post.pk %}"
+              >{{post.title|truncatechars_html:30}}</a
+            >
+          </h3>
+          <p class="diary-text-preview lh-large mv2">
+            {{post.body|truncatechars_html:300}}
+          </p>
+        </div>
+      </div>
+    </article>
+    {% endfor %}
+  </section>
+</main>
+{% endblock %}

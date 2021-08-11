@@ -3,22 +3,25 @@
 {% endblock add_css %} {% block content %}
 
 <section class="detail-header">
-  <a href="{% url 'mypage' %}" class="go-list dark-grey"
-    ><i class="fas fa-chevron-left mh1"></i> 내 글 목록으로</a
-  >
+  <a href="{% url 'mypage' %}" class="go-list dark-grey">
+    <i class="fas fa-chevron-left mh1"></i>
+    내 글 목록으로
+  </a>
 </section>
 
 <!-- Music Area -->
 <section class="music-area w-70 ml-auto mr-auto mb3 flex justify-center">
-  <div class="music flex ph3 pv3 mt5 justify-center">
-    <img
-      src="{{ post.track_album_cover }}"
-      alt="album image"
-      class="br-100 mv3 mh3 shadow-5-ns"
-    />
-    <div class="music-info mh3 mv3 pv4">
-      <p class="music-title f3">{{post.track_title}}</p>
-      <p class="music-artist">{{post.track_artist}}</p>
+  <div class="music ph3 pv3 mt5 flex vh-50 justify-center">
+    <div class="img-container w-30">
+      <img
+        src="{{ post.track_album_cover }}"
+        alt="album image"
+        class="br-100 mv3 mh3 shadow-5-ns w-100"
+      />
+    </div>
+    <div class="music-info mh5 mv3 pv4 tl w-60">
+      <p class="music-title f3 mv4">{{post.track_title}}</p>
+      <p class="music-artist mv4">{{post.track_artist}}</p>
       <audio class="media-player dn" src="{{ post.track_audio }}" controls>
         mp3-preview
       </audio>
@@ -42,21 +45,23 @@
   </div>
 </section>
 
-<hr color="#DEDBD8" />
+<hr class="tc mv2 center br1" />
 
 <!-- Diary Area -->
 <section class="diary-area">
   <div class="diary w-70 ml-auto mr-auto">
-    <h1 class="diary-title">{{post.title}}</h1>
-    <div class="diary-info mv3">
-      <h4 class="diary-author mb3 mt4">
+    <h1 class="diary-title f2 mb0 mt5">{{post.title}}</h1>
+    <div class="diary-info tr mv3">
+      <h4 class="diary-author mb3 mt4 f4 dark-gray">
         작성자 : <span class="username">{{post.writer}}</span>
       </h4>
       {% if post.pub_date %}
-      <h5 class="diary-date">{{ post.pub_date }}</h5>
+      <h5 class="diary-date f5 dark-gray">
+        {{post.pub_date|date:"Y년 n월 j일 (l) g:i"}}
+      </h5>
       {% endif %}
     </div>
-    <div class="diary-content mv5 lh-large">{{post.body|linebreaks}}</div>
+    <div class="diary-content mv5 lh-large f4">{{post.body|linebreaks}}</div>
     <div class="btn-area">
       {% if user.nickname == post.writer%}
       <div class="btn-left">

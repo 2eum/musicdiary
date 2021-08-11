@@ -1,0 +1,56 @@
+/* Home */
+.home-banner-container {
+  background: linear-gradient(
+    to bottom,
+    rgba(196, 185, 157),
+    rgba(196, 185, 157, 0.82)
+  );
+}
+
+.home-banner-container *,
+.home-banner-container p,
+.home-banner-container .diary-title {
+  color: var(--mus-white);
+}
+
+.home-title {
+  font-family: Pretendard-Thin;
+  background: rgba(255, 213, 196, 0.5);
+}
+
+.music-title,
+.diary-title {
+  font-family: Pretendard-Medium;
+  color: var(--mus-darkgray);
+}
+
+.music-artist {
+  font-family: Pretendard-Medium;
+  color: var(--mus-little-darkgray);
+}
+
+.preview-music img {
+  max-width: 60%;
+  filter: drop-shadow(3px 3px 3px #000);
+}
+
+.entry {
+  display: none;
+}
+
+.entry.current {
+  display: flex;
+}
+
+.prev,
+.next {
+  background: none;
+}
+
+.pink-emp {
+  color: #dba691;
+}
+
+.create-post p {
+  font-family: Pretendard-ExtraLight;
+}

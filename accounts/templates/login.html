@@ -1,7 +1,7 @@
 {% extends './base.html' %} {% load static %} {% block add_css %}
 <link rel="stylesheet" href="{% static 'css/login-register.css' %}" />
 {% endblock add_css %} {% block content %}
-<main class="ph4 pv3 mt4 black-80 login-container">
+<main class="login-container ph4 pv3 mv5 black-80 w-80 center">
   <form
     method="post"
     action="{% url 'login' %}"
@@ -24,7 +24,18 @@
       </div>
       <div class="mv3">
         <input
-          class="b pa2 input-reset ba w-80 b--moon-gray fw3 br2 br-light-gray mb3"
+          class="
+            b
+            pa2
+            input-reset
+            ba
+            w-80
+            b--moon-gray
+            fw3
+            br2
+            br-light-gray
+            mb3
+          "
           type="password"
           name="password"
           id="password"

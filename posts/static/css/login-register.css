@@ -1,23 +1,9 @@
-.login-container {
-  width: 80%;
-  margin: 5rem auto;
-}
-
 .login-card {
   background-color: var(--mus-white);
 }
 
 .login-card legend {
   font-family: Pretendard-Light;
-}
-
-.register-container {
-  width: 80%;
-  margin: 2rem auto;
-}
-
-.brown {
-  color: var(--mus-brown);
 }
 
 .br-brown {

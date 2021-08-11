@@ -23,9 +23,9 @@
     <h1 class="content-title mt5 mb4">나의 일기</h1>
     <ul class="viewtab flex justify-end">
       <li class="view br pr3 ma3">
-        <a class="current" href="">리스트 보기</a>
+        <a href="{% url 'mypage' %}">리스트 보기</a>
       </li>
-      <li class="view mv3"><a href="{% url 'mypage-cal' %}">달력 보기</a></li>
+      <li class="view mv3"><a class="current" href="{% url 'mypage-cal' %}">달력 보기</a></li>
     </ul>
 
     <!-- calendar -->

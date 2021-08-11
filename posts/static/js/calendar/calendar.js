@@ -53,7 +53,7 @@ const renderCalendar = () => {
       // Link to details event-listener
       const postNum = recent.querySelector(".id").textContent;
       const link = document.createElement("a");
-      link.href = `/detail/${postNum}`;
+      link.href = `/posts/detail/${postNum}`;
       link.classList.add("post-link");
       dateElement.appendChild(link);
     }

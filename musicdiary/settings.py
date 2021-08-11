@@ -28,9 +28,9 @@ CLIENT_ID = os.environ["CLIENT_ID"]
 CLIENT_SECRET = os.environ["CLIENT_SECRET"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://ileum.herokuapp.com/']
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
 # Application definition

@@ -2,24 +2,15 @@
 <link rel="stylesheet" href="{% static 'css/new.css' %}" />
 {% endblock add_css %} {% block content %}
 
-<section class="new-header">
+<section class="new-header tl mt5 mb4 center">
   <h2>나의 이야기 작성하기</h2>
-  <hr color="#DEDBD8">
+  <hr class="tc mt4 mb3 br1" />
 </section>
 
-<section class="new-content-area">
-
-  {% if messages %}
-  <ul class="errorlist">
-    {% for message in messages %}
-    <li>{{ message }}</li>
-    {% endfor %}
-  </ul>
-  {% endif %}
-
-  <form method="POST" action="{% url 'new' %}" class="post-form">
+<section class="new-content-area w-80 center tl">
+  <form method="POST" action="{% url 'new' %}" class="post-form center">
     {% csrf_token %}
-    <section class="form-top flex justify-between w-80 h3 items-center">
+    <section class="form-top flex justify-between w-80 h4 items-center center">
       <input type="text" name="title" class="form-title h2 pa2 w-30" placeholder="제목" value="{{form2.title.value}}"/>
 
       {% if track_title %}
@@ -27,8 +18,8 @@
         <img src="{{track_album_cover}}" alt="" class="cover br-100 w-30 h-100 mw4">
         <div class="info ml2">
           <h4>선곡한 음악</h4>
-          <h4 class="title">{{track_title}}</h4>
-          <h5 class="artist">{{track_artist}}</h5>
+          <h4 class="title mb2">{{track_title}}</h4>
+          <h5 class="artist mb2">{{track_artist}}</h5>
           <div class="custom-player br2">
             <div class="controls flex mt2 justify-center pa1 items-center">
               <i class="fas fa-play action-btn pointer f6 mr2"></i>
@@ -44,10 +35,10 @@
       {% else %}
       <div class="music_choice w-30 dn mb2 justify-center items-center">
         <img src="" alt="" class="cover br-100 w-30 h-100 mw4">
-        <div class="info ml2">
+        <div class="info ml2 w-60">
           <h4>선곡한 음악</h4>
-          <h4 class="title"></h4>
-          <h5 class="artist"></h5>
+          <h4 class="title mv2"></h4>
+          <h5 class="artist mb2"></h5>
           <div class="custom-player br2">
             <div class="controls flex mt2 justify-center pa1 items-center">
               <i class="fas fa-play action-btn pointer f6 mr2"></i>
@@ -74,7 +65,7 @@
         <div class="result_box w-100"></div>
       </section>
     </section>
-    <textarea name="body" class="form-body w-80 mv4 pa2 lh-title" placeholder="오늘의 이야기를 들려주세요">{{form2.body.value}}</textarea>
+    <textarea name="body" class="form-body mt2 mb3 w-80 pa3 lh-title ml-auto br1" placeholder="오늘의 이야기를 들려주세요" value="{{form2.body.value}}" autocomplete="off"></textarea>
     {% if track_title %}
       <input type="hidden" name="track_album_cover" value="{{track_album_cover}}">
       <input type="hidden" name="track_title" value="{{track_title}}">
@@ -86,12 +77,19 @@
       <input type="hidden" name="track_artist" value="">
       <input type="hidden" name="track_audio" value="">
     {% endif %}
+  {% if messages %}
+    <ul class="errorlist">
+      {% for message in messages %}
+      <li class="red f5">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
 
-<div class="btn-area">
-  <button class="save-btn mv3 dib b ph4 pv2 
-input-reset bn br2 grow pointer f4 hover-white" type="submit">저장하기</button>
-</div>
-
+  <div class="btn-area w-80">
+    <button class="save-btn mv3 dib b ph4 pv2 
+  input-reset bn br2 grow pointer f4 hover-white fr" type="submit">저장하기</button>
+  </div>
+</form>
 <script src="{% static 'js/spotify.js' %}"></script>
 <script src="{% static 'js/player.js' %}"></script>
 {% endblock content %}

@@ -1,20 +1,12 @@
 /* new */
 
 .new-header {
-  text-align: left;
-  margin: 2rem auto;
   width: 64%;
 }
 
 .new-header hr {
+  border: 2px solid #dedbd8;
   width: 18%;
-  text-align: left;
-  margin: 30px 0 50px 0;
-}
-
-.new-content-area {
-  margin: 0% 10%;
-  text-align: left;
 }
 
 .result_box {
@@ -75,28 +67,25 @@
   background-color: var(--mus-brown);
 }
 
-.music_choice h4,
-h5 {
-  margin-bottom: 5px;
-}
-
 .music_choice img {
   object-fit: scale-down;
 }
 
-.post-form {
-  width: 80vw;
-  height: 60vh;
-  margin: 0 10%;
-}
-
 .form-body {
   height: 40vh;
-  border-color: var(--mus-neutralgray);
+  border: 1px solid var(--mus-neutralgray);
+  resize: none;
 }
 
 .form-body:focus {
   outline: none;
+}
+
+.form-body,
+.btn-area,
+.errorlist {
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 .save-btn {

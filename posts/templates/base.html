@@ -33,7 +33,7 @@
     <!-- top-nav section -->
     <nav class="ph4 pv1 lh-solid w-100 flex justify-between items-center">
       <a class="logo" href="{% url 'home' %}">
-        <img src="{% static 'images/1eum_logo.png' %}" alt="logo" class="" />
+        <img src="{% static 'images/1eum_logo.png' %}" alt="logo" />
       </a>
       <div class="w-100 ml4 flex justify-between items-center">
         <ul class="h3 flex items-center">
@@ -82,7 +82,7 @@
             </button>
           </li>
           <li class="mh2">
-            <a href="#" class="dark-gray">둘러보기</a>
+            <a href="/explore" class="dark-gray">둘러보기</a>
           </li>
         </ul>
         {% if user.is_authenticated %}

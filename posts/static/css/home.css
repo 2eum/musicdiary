@@ -55,7 +55,7 @@
   font-family: Pretendard-ExtraLight;
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1200px) {
   .content-area,
   .home-content-container,
   .switchables {

@@ -31,7 +31,7 @@
   background-color: var(--mus-white);
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1200px) {
   .header-content .greeting {
     font-size: 2.5rem;
   }

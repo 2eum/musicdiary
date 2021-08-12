@@ -55,7 +55,7 @@ hr {
   width: calc(20 / 3 * 1%);
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1200px) {
   .music-area,
   .music {
     display: block;

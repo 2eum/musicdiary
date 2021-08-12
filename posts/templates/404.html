@@ -1,3 +1,6 @@
-{% extends './base.html' %} {% load static %} {% block content %}
-<img src="{% static 'images/404.png' %}" alt="404" />
+{% extends './base.html' %} {% load static %} 
+{% block content %}
+<div class="img-container overflow-hidden center w-80">
+  <img class="w-50 center db" src="{% static 'images/404.png' %}" alt="404" />
+</div>
 {% endblock content %}

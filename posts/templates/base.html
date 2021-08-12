@@ -35,8 +35,8 @@
       <a class="logo" href="{% url 'home' %}">
         <img src="{% static 'images/1eum_logo.png' %}" alt="logo" />
       </a>
-      <div class="w-100 ml4 flex justify-between items-center">
-        <ul class="h3 flex items-center">
+      <div class="menu w-100 ml4 flex justify-between items-center">
+        <ul class="menu-left h3 flex items-center">
           <li class="mh3 br2 h2 flex">
             <input
               class="
@@ -86,11 +86,15 @@
           </li>
         </ul>
         {% if user.is_authenticated %}
-        <p class="ml7 mr3 f4 brown">{{ user.nickname }}님, 어서오세요 :)</p>
+        <p class="greet db ml7 mr3 f4 brown">
+          {{ user.nickname }}님, 어서오세요 :)
+        </p>
         {% else %}
-        <p class="ml7 mr3 f5 brown">로그인 하고 더 많은 이야기를 나눠요! :)</p>
+        <p class="greet db ml7 mr3 f5 brown">
+          로그인 하고 더 많은 이야기를 나눠요! :)
+        </p>
         {% endif %}
-        <ul class="flex items-center">
+        <ul class="menu-right flex items-center">
           {% if user.is_authenticated %}
           <li class="mh3 f6">
             <a href="{% url 'mypage' %}" class="dark-gray">내 페이지</a>

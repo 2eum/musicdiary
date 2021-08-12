@@ -1,13 +1,13 @@
 {% extends './base.html' %} {% load static %} {% block add_css %}
 <link rel="stylesheet" href="{% static 'css/detail.css' %}" />
-{% endblock add_css %} {% block content %}
-
+{% endblock add_css %} {% block content %} {% if user.nickname == post.writer%}
 <section class="detail-header">
   <a href="{% url 'mypage' %}" class="go-list dark-grey">
     <i class="fas fa-chevron-left mh1"></i>
     내 글 목록으로
   </a>
 </section>
+{% endif %}
 
 <!-- Music Area -->
 <section class="music-area w-70 ml-auto mr-auto mb3 flex justify-center">

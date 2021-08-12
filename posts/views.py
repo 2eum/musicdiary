@@ -21,6 +21,9 @@ def home(request):
     posts = Content.objects.filter(pub_date__date=timezone.datetime.today()).order_by('-pub_date')
     return render(request,'home.html',{'posts_list':posts})
 
+def tutorial(request):
+    return render(request,'tutorial.html')
+
 def new(request):
     if request.user.is_authenticated:
 

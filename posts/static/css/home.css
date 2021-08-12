@@ -54,3 +54,30 @@
 .create-post p {
   font-family: Pretendard-ExtraLight;
 }
+
+@media screen and (max-width: 1200px) {
+  .content-area,
+  .home-content-container,
+  .switchables {
+    width: 100%;
+    padding: 5%;
+  }
+
+  .entry.current {
+    padding: 0;
+  }
+
+  .entry.current .entry-content {
+    display: block;
+    padding: 1rem 0;
+    margin: 1rem 0;
+  }
+  .entry.current .entry-content > * {
+    width: 100%;
+    height: auto;
+  }
+
+  .create-post {
+    padding: 0 1rem;
+  }
+}

@@ -100,3 +100,14 @@
 .result_box {
   position: absolute;
 }
+
+@media screen and (max-width: 1200px) {
+  .form-top {
+    display: block;
+    height: auto;
+  }
+  .form-top > * {
+    width: 100%;
+    margin: 1rem 0;
+  }
+}

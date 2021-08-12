@@ -48,6 +48,7 @@
               <button class="prev bn pointer f3">
                 <i class="fas fa-chevron-left"></i>
               </button>
+              <div class="entry-content flex justify-between w-100">
               <div class="preview-music ph3 pv3 h-100 tc w-30">
                 <img
                   src="{{ post.track_album_cover }}"
@@ -96,6 +97,7 @@
                   <span class="ml2 f5 o-80">by {{post.writer}}</span>
                 </h3>
                 <p class="diary-text-preview lh-large h-75">{{post.body|truncatechars_html:150}}</p>
+              </div>
               </div>
               <button class="next bn pointer f3">
                 <i class="fas fa-chevron-right"></i>

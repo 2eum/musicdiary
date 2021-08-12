@@ -178,3 +178,28 @@ nav > .logo {
   background-color: var(--mus-white);
   width: calc(20 / 3 * 1%);
 }
+
+@media screen and (max-width: 1200px) {
+  /* nav */
+  nav.flex,
+  nav .flex {
+    display: block;
+    text-align: center;
+  }
+  nav .logo img {
+    width: 8rem;
+  }
+
+  nav .menu {
+    margin: 0;
+  }
+
+  nav .menu-left {
+    display: none;
+  }
+
+  nav .greet,
+  nav .menu-right li {
+    margin: 0.5rem 0;
+  }
+}

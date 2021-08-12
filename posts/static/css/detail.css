@@ -54,3 +54,32 @@ hr {
   background-color: var(--mus-pink);
   width: calc(20 / 3 * 1%);
 }
+
+@media screen and (max-width: 1200px) {
+  .music-area,
+  .music {
+    display: block;
+    height: auto;
+  }
+
+  .music-area > *,
+  .music > * {
+    width: 100%;
+    padding: 0;
+    margin: 2rem 0;
+    text-align: center;
+  }
+
+  .music img {
+    margin: 0;
+  }
+
+  .music .custom-player {
+    width: 100%;
+  }
+
+  .controls {
+    justify-content: center;
+    margin: 1rem 0;
+  }
+}

@@ -21,6 +21,7 @@ from posts import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name="home"),
+    path('tutorial', views.tutorial, name="tutorial"),
 
     # posts url 
 	path('posts/', include('posts.urls')),

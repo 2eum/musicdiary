@@ -28,6 +28,21 @@
     {% block add_css %} {% endblock add_css %}
 
     <title>일:음</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-LBEM9PBR7J"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-LBEM9PBR7J");
+    </script>
   </head>
   <body>
     <!-- top-nav section -->
@@ -82,7 +97,7 @@
             </button>
           </li>
           <li class="mh2">
-            <a href="/explore" class="dark-gray">둘러보기</a>
+            <a href="{% url 'tutorial' %}" class="dark-gray">사용 안내</a>
           </li>
         </ul>
         {% if user.is_authenticated %}
@@ -95,9 +110,6 @@
         </p>
         {% endif %}
         <ul class="menu-right flex items-center">
-          <li class="mh3 f6">
-            <a href="{% url 'tutorial' %}" class="dark-gray">사용 안내</a>
-          </li>
           {% if user.is_authenticated %}
           <li class="mh3 f6">
             <a href="{% url 'mypage' %}" class="dark-gray">내 페이지</a>
@@ -113,6 +125,9 @@
             <a href="{% url 'signup' %}" class="dark-gray">회원가입</a>
           </li>
           {% endif %}
+          <li class="mh3 f6">
+            <a href="{% url 'feedback' %}" class="dark-gray"> 피드백 남기기 </a>
+          </li>
         </ul>
       </div>
     </nav>

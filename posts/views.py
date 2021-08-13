@@ -24,6 +24,9 @@ def home(request):
 def tutorial(request):
     return render(request,'tutorial.html')
 
+def feedback(request):
+    return render(request,'feedback.html')
+
 def new(request):
     if request.user.is_authenticated:
 

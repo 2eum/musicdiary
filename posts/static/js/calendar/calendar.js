@@ -37,8 +37,14 @@ const renderCalendar = () => {
 
   dates.forEach((date, i) => {
     const condition =
-      i >= firstDateIndex && i < lastDateIndex + 1 ? "this" : "other";
-    const dateClassSelector = `.on${viewYear}-${viewMonth + 1}-${date}`;
+      i < firstDateIndex ? "prev" : i > lastDateIndex ? "next" : "this";
+    const dateClassSelector = `.on${viewYear}-${
+      condition === "this"
+        ? viewMonth + 1
+        : condition === "prev"
+        ? viewMonth
+        : viewMonth + 2
+    }-${date}`;
     const entryImg = document.querySelectorAll(dateClassSelector);
     const recent = [...entryImg][0];
 

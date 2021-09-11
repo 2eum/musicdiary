@@ -80,7 +80,8 @@
   color: #396ee2;
 }
 
-.other {
+.prev,
+.next {
   color: var(--mus-little-darkgray) !important;
 }
 
